@@ -1,0 +1,344 @@
+{
+  "input": {
+    "createdAt": "2025-06-16T04:30:36.885Z",
+    "updatedAt": "2025-06-26T03:45:17.605Z",
+    "id": "x8ofUJhP2wjx7UOT",
+    "name": "KB Automation",
+    "active": false,
+    "isArchived": false,
+    "nodes": [
+      {
+        "parameters": {
+          "operation": "delete",
+          "tableId": "=kb_{{ $('Get KB Name and Path').item.json.table_name }}",
+          "filterType": "string",
+          "filterString": "=metadata->>file_id=like.*{{ $('Get KB Name and Path').item.json.path }}*"
+        },
+        "id": "b322130f-7cc5-4f39-b358-598727668dea",
+        "name": "Delete Old Doc Rows",
+        "type": "n8n-nodes-base.supabase",
+        "typeVersion": 1,
+        "position": [
+          880,
+          180
+        ],
+        "alwaysOutputData": true,
+        "retryOnFail": true,
+        "credentials": {
+          "supabaseApi": {
+            "id": "EDe1odkkGf1KtTQD",
+            "name": "Supabase account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "triggerOn": "folder",
+          "path": "/data/shared",
+          "events": [
+            "add",
+            "change",
+            "unlink"
+          ],
+          "options": {
+            "followSymlinks": true,
+            "usePolling": true
+          }
+        },
+        "type": "n8n-nodes-base.localFileTrigger",
+        "typeVersion": 1,
+        "position": [
+          80,
+          120
+        ],
+        "id": "a2284063-e5c2-4a19-83b7-ee7ee5041286",
+        "name": "Local File Trigger"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "e051736f-949a-4230-bf32-c9ade2674b12",
+                "leftValue": "={{ $('Local File Trigger').item.json.event }}",
+                "rightValue": "add",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals",
+                  "name": "filter.operator.equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          680,
+          120
+        ],
+        "id": "4a75116c-efab-4332-afec-9cc729698f4f",
+        "name": "If"
+      },
+      {
+        "parameters": {
+          "content": "## Create/Update/Delete Local Knowledgebase\n### 检测本地文件的变动，创建/更新文件时会更新数据库的对应知识，删除文件时会删除数据库的对应知识",
+          "height": 385,
+          "width": 1549,
+          "color": 5
+        },
+        "id": "057c0da9-2768-487f-b816-114b8049ac64",
+        "name": "Sticky Note1",
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          0,
+          -40
+        ]
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "Mhbn1hQSHRD5S95O",
+            "mode": "list",
+            "cachedResultName": "Read and Upload One File to KB"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "input": "={{ $('Get KB Name and Path').item.json.path }}"
+            },
+            "matchingColumns": [
+              "input"
+            ],
+            "schema": [
+              {
+                "id": "input",
+                "displayName": "input",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.2,
+        "position": [
+          1360,
+          120
+        ],
+        "id": "db3c96f3-bbb2-40db-ac5e-76cde97347f5",
+        "name": "Read and Upload One File to KB"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "e051736f-949a-4230-bf32-c9ade2674b12",
+                "leftValue": "={{ $('Local File Trigger').item.json.event }}",
+                "rightValue": "change",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals",
+                  "name": "filter.operator.equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          1060,
+          180
+        ],
+        "id": "e6c21179-f9c9-4c82-a84c-37c767bf3622",
+        "name": "If1"
+      },
+      {
+        "parameters": {
+          "content": "## 包含硬编码的路径",
+          "height": 240,
+          "width": 220
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          20,
+          60
+        ],
+        "id": "585a7655-ff65-4ed2-9ce3-a5efcf400223",
+        "name": "Sticky Note"
+      },
+      {
+        "parameters": {},
+        "type": "n8n-nodes-globals.globalConstants",
+        "typeVersion": 1,
+        "position": [
+          280,
+          120
+        ],
+        "id": "7bfbab91-f20a-43cc-a5a2-cfe7abc2f5ee",
+        "name": "Global Constants",
+        "credentials": {
+          "globalConstantsApi": {
+            "id": "q2fHPkJigPYeQHLM",
+            "name": "Global Constants account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "language": "python",
+          "pythonCode": "path = _input.item.json.path\nkb_path = _input.item.json.constants.kb_path\nprint(path, kb_path)\nreturn [{\"json\": {\"path\": _input.item.json.path, \"table_name\": path.split(kb_path)[1].split('/')[1]}}]"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          480,
+          120
+        ],
+        "id": "26bcf8e4-2a9a-4cb3-bb46-c068d3219dab",
+        "name": "Get KB Name and Path"
+      }
+    ],
+    "connections": {
+      "Delete Old Doc Rows": {
+        "main": [
+          [
+            {
+              "node": "If1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Local File Trigger": {
+        "main": [
+          [
+            {
+              "node": "Global Constants",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If": {
+        "main": [
+          [
+            {
+              "node": "Read and Upload One File to KB",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Delete Old Doc Rows",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If1": {
+        "main": [
+          [
+            {
+              "node": "Read and Upload One File to KB",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Global Constants": {
+        "main": [
+          [
+            {
+              "node": "Get KB Name and Path",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Get KB Name and Path": {
+        "main": [
+          [
+            {
+              "node": "If",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "settings": {
+      "executionOrder": "v1"
+    },
+    "staticData": null,
+    "meta": {
+      "templateCredsSetupCompleted": true
+    },
+    "pinData": {
+      "Get KB Name and Path": [
+        {
+          "json": {
+            "path": "/data/shared/code/odoo-pvs/README.md",
+            "table_name": "code"
+          }
+        }
+      ],
+      "Local File Trigger": [
+        {
+          "json": {
+            "event": "add",
+            "path": "/data/shared/code/odoo-pvs/README.md"
+          }
+        }
+      ]
+    },
+    "versionId": "8d8884f5-56b8-4ce1-9684-aadbca4fdf1c",
+    "triggerCount": 1,
+    "tags": [
+      {
+        "createdAt": "2025-06-26T03:45:11.043Z",
+        "updatedAt": "2025-06-26T03:45:11.043Z",
+        "id": "L2t4VuLDnRr5jLLD",
+        "name": "Main-DEP"
+      }
+    ]
+  },
+  "repo_name": "n8n-backup",
+  "repo_owner": "engineering-justpro",
+  "repo_path": "workflows"
+}
