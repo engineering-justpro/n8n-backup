@@ -1,0 +1,391 @@
+{
+  "input": {
+    "createdAt": "2025-06-19T02:30:41.794Z",
+    "updatedAt": "2025-06-19T02:31:03.403Z",
+    "id": "F8OPfZjcGUAzy2kU",
+    "name": "PRD_AI_Suggestion",
+    "active": false,
+    "isArchived": false,
+    "nodes": [
+      {
+        "parameters": {
+          "resource": "custom",
+          "customResource": "x_prd",
+          "operation": "getAll",
+          "limit": 1,
+          "options": {},
+          "filterRequest": {
+            "filter": [
+              {
+                "fieldName": "x_studio_complete",
+                "operator": "notEqual",
+                "value": "False"
+              },
+              {
+                "fieldName": "x_studio_type",
+                "value": "Draft"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.odoo",
+        "typeVersion": 1,
+        "position": [
+          -960,
+          180
+        ],
+        "id": "13a4666b-7280-4f8b-9033-040f9844e6fc",
+        "name": "Odoo",
+        "credentials": {
+          "odooApi": {
+            "id": "d1Xjz65wvyWyrZGA",
+            "name": "Odoo account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.lmChatDeepSeek",
+        "typeVersion": 1,
+        "position": [
+          -500,
+          40
+        ],
+        "id": "a264633a-fa33-42c5-af8b-3b4773cdc570",
+        "name": "DeepSeek Chat Model"
+      },
+      {
+        "parameters": {
+          "mode": "markdownToHtml",
+          "markdown": "={{ $json.output }}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.markdown",
+        "typeVersion": 1,
+        "position": [
+          380,
+          200
+        ],
+        "id": "29bf4155-73c4-45b7-81a7-8e50d6ba28c6",
+        "name": "Markdown"
+      },
+      {
+        "parameters": {
+          "promptType": "define",
+          "text": "={{ $json.x_studio_requirement }}",
+          "options": {
+            "systemMessage": "作为一个资深的python开发专家，请根据上述的需求文字，创建一个能够让AI coding工具理解的PRD文档，文档需要详细明了，易于理解，需要提供样例代码。"
+          }
+        },
+        "type": "@n8n/n8n-nodes-langchain.agent",
+        "typeVersion": 2,
+        "position": [
+          -520,
+          -140
+        ],
+        "id": "5c7b84d1-e973-4a5d-8028-2c20f73e9855",
+        "name": "AI Agent - Deepseek"
+      },
+      {
+        "parameters": {
+          "model": "qwen2.5:7b",
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+        "typeVersion": 1,
+        "position": [
+          -580,
+          540
+        ],
+        "id": "ad90b78c-a496-4da0-85bf-4fab67fab033",
+        "name": "Ollama Chat Model"
+      },
+      {
+        "parameters": {
+          "resource": "custom",
+          "customResource": "x_prd",
+          "operation": "update",
+          "customResourceId": "={{ $('Odoo').item.json.id }}",
+          "fieldsToCreateOrUpdate": {
+            "fields": [
+              {
+                "fieldName": "x_studio_ai_prd",
+                "fieldValue": "={{ $json.data }}"
+              },
+              {
+                "fieldName": "x_studio_type",
+                "fieldValue": "AI"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.odoo",
+        "typeVersion": 1,
+        "position": [
+          560,
+          200
+        ],
+        "id": "34ce29e9-023b-43d0-9d40-c23cabf2222d",
+        "name": "Odoo AI PRD",
+        "credentials": {
+          "odooApi": {
+            "id": "d1Xjz65wvyWyrZGA",
+            "name": "Odoo account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "rule": {
+            "interval": [
+              {
+                "field": "minutes",
+                "minutesInterval": 30
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.scheduleTrigger",
+        "typeVersion": 1.2,
+        "position": [
+          -1140,
+          180
+        ],
+        "id": "649e2d56-2e67-4d34-a17b-d1ad7bb1e6d3",
+        "name": "Schedule Trigger"
+      },
+      {
+        "parameters": {
+          "fieldToSplitOut": "x_studio_requirement",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitOut",
+        "typeVersion": 1,
+        "position": [
+          -800,
+          180
+        ],
+        "id": "ba747624-4c91-46e6-94db-2e28d15c968f",
+        "name": "Split Out"
+      },
+      {
+        "parameters": {
+          "fieldsToAggregate": {
+            "fieldToAggregate": [
+              {
+                "fieldToAggregate": "output",
+                "renameField": true,
+                "outputFieldName": "Deepseek"
+              },
+              {
+                "fieldToAggregate": "output",
+                "renameField": true,
+                "outputFieldName": "Ollama"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.aggregate",
+        "typeVersion": 1,
+        "position": [
+          -120,
+          200
+        ],
+        "id": "26ea5b35-0d73-4e29-8eec-5840138b69a8",
+        "name": "Aggregate"
+      },
+      {
+        "parameters": {
+          "promptType": "define",
+          "text": "={{ $('Odoo').item.json.display_name }}",
+          "options": {
+            "systemMessage": "作为一个资深的开发专家，请根据上述的需求文字，创建一个能够让AI coding工具理解的PRD文档。"
+          }
+        },
+        "type": "@n8n/n8n-nodes-langchain.agent",
+        "typeVersion": 2,
+        "position": [
+          -540,
+          300
+        ],
+        "id": "bac183f4-4c6b-4afc-974e-35b9d81b4e92",
+        "name": "AI Agent - Ollama",
+        "alwaysOutputData": true,
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "promptType": "define",
+          "text": "={{ $json.Deepseek }}{{ $json.Ollama }}",
+          "options": {
+            "systemMessage": "作为一位系统开发专家，请结合Deepseek与Ollama给出的建议，请判断哪个方案合理，并优化。"
+          }
+        },
+        "type": "@n8n/n8n-nodes-langchain.agent",
+        "typeVersion": 2,
+        "position": [
+          60,
+          200
+        ],
+        "id": "bfa6dbfa-3d17-46b9-a7c5-2ffd9d8222d1",
+        "name": "AI Agent"
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.lmChatDeepSeek",
+        "typeVersion": 1,
+        "position": [
+          0,
+          420
+        ],
+        "id": "1943ef30-8434-41c8-b513-63ad401d88a4",
+        "name": "DeepSeek Chat Model1"
+      }
+    ],
+    "connections": {
+      "Odoo": {
+        "main": [
+          [
+            {
+              "node": "Split Out",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "DeepSeek Chat Model": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "AI Agent - Deepseek",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Markdown": {
+        "main": [
+          [
+            {
+              "node": "Odoo AI PRD",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "AI Agent - Deepseek": {
+        "main": [
+          [
+            {
+              "node": "Aggregate",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Ollama Chat Model": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "AI Agent - Ollama",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Schedule Trigger": {
+        "main": [
+          [
+            {
+              "node": "Odoo",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Split Out": {
+        "main": [
+          [
+            {
+              "node": "AI Agent - Ollama",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "AI Agent - Deepseek",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Aggregate": {
+        "main": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "AI Agent - Ollama": {
+        "main": [
+          [
+            {
+              "node": "Aggregate",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "DeepSeek Chat Model1": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "AI Agent",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "AI Agent": {
+        "main": [
+          [
+            {
+              "node": "Markdown",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "settings": {
+      "executionOrder": "v1"
+    },
+    "staticData": null,
+    "meta": null,
+    "pinData": {},
+    "versionId": "a9dc0e2d-6268-4008-a02b-9ffcd512034a",
+    "triggerCount": 0,
+    "tags": []
+  },
+  "repo_name": "n8n-backup",
+  "repo_owner": "engineering-justpro",
+  "repo_path": "workflows"
+}
