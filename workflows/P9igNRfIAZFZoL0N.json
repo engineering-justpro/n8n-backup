@@ -1,0 +1,135 @@
+{
+  "input": {
+    "createdAt": "2025-06-24T06:01:46.629Z",
+    "updatedAt": "2025-06-24T08:09:35.003Z",
+    "id": "P9igNRfIAZFZoL0N",
+    "name": "Get KB Name By Path",
+    "active": false,
+    "isArchived": false,
+    "nodes": [
+      {
+        "parameters": {
+          "workflowInputs": {
+            "values": [
+              {
+                "name": "input"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "typeVersion": 1.1,
+        "position": [
+          -260,
+          40
+        ],
+        "id": "e060d31a-47ad-4386-ab67-65406ec85589",
+        "name": "When Executed by Another Workflow"
+      },
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.manualTrigger",
+        "typeVersion": 1,
+        "position": [
+          -260,
+          240
+        ],
+        "id": "55305a43-bac9-4ee8-ac42-721dbd216151",
+        "name": "When clicking ‘Execute workflow’"
+      },
+      {
+        "parameters": {},
+        "type": "n8n-nodes-globals.globalConstants",
+        "typeVersion": 1,
+        "position": [
+          0,
+          40
+        ],
+        "id": "d3726448-e164-4795-806f-7c325652dbc3",
+        "name": "Global Constants",
+        "credentials": {
+          "globalConstantsApi": {
+            "id": "q2fHPkJigPYeQHLM",
+            "name": "Global Constants account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "language": "python",
+          "pythonCode": "# Loop over input items and add a new field called 'myNewField' to the JSON of each one\nresult = {}\nfor item in _input.all():\n  result[\"json\"] = {\"table_name\": item.json.input.split(item.json.constants.kb_path)[1].split('/')[1]}\nreturn result"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          260,
+          40
+        ],
+        "id": "229be480-f5c1-495b-9ef3-936884f38563",
+        "name": "Code"
+      }
+    ],
+    "connections": {
+      "When Executed by Another Workflow": {
+        "main": [
+          [
+            {
+              "node": "Global Constants",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "When clicking ‘Execute workflow’": {
+        "main": [
+          [
+            {
+              "node": "Global Constants",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Global Constants": {
+        "main": [
+          [
+            {
+              "node": "Code",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "settings": {
+      "executionOrder": "v1"
+    },
+    "staticData": null,
+    "meta": null,
+    "pinData": {
+      "When Executed by Another Workflow": [
+        {
+          "json": {
+            "input": "/data/shared/code/odoo-pvs/om_data_remove/models/model.py"
+          }
+        }
+      ]
+    },
+    "versionId": "9323b31e-7adf-4e9a-92e1-540c0e9b08dd",
+    "triggerCount": 0,
+    "tags": [
+      {
+        "createdAt": "2025-06-24T05:57:29.533Z",
+        "updatedAt": "2025-06-24T05:57:29.533Z",
+        "id": "0TQNWPOpix39gaQQ",
+        "name": "Tool"
+      }
+    ]
+  },
+  "repo_name": "n8n-backup",
+  "repo_owner": "engineering-justpro",
+  "repo_path": "workflows"
+}
