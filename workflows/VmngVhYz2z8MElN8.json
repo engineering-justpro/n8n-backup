@@ -1,260 +1,255 @@
 {
-  "input": {
-    "createdAt": "2025-06-27T09:05:47.804Z",
-    "updatedAt": "2025-06-27T09:07:37.202Z",
-    "id": "VmngVhYz2z8MElN8",
-    "name": "Web Search",
-    "active": false,
-    "isArchived": false,
-    "nodes": [
-      {
-        "parameters": {
-          "operation": "extractHtmlContent",
-          "extractionValues": {
-            "values": [
-              {
-                "key": "site_html",
-                "cssSelector": "body"
-              }
-            ]
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.html",
-        "typeVersion": 1.2,
-        "position": [
-          1760,
-          200
-        ],
-        "id": "3262d887-9580-48e2-9312-30930b34b1a0",
-        "name": "HTML",
-        "alwaysOutputData": true,
-        "onError": "continueRegularOutput"
-      },
-      {
-        "parameters": {
-          "url": "={{ $json.url }}",
-          "options": {}
-        },
-        "type": "n8n-nodes-base.httpRequest",
-        "typeVersion": 4.2,
-        "position": [
-          1560,
-          200
-        ],
-        "id": "56b0f20e-1c87-48d6-abd3-c7a6c8fd02c8",
-        "name": "HTTP Request",
-        "alwaysOutputData": true,
-        "onError": "continueRegularOutput"
-      },
-      {
-        "parameters": {
-          "aggregate": "aggregateAllItemData",
-          "destinationFieldName": "search_results",
-          "options": {}
-        },
-        "type": "n8n-nodes-base.aggregate",
-        "typeVersion": 1,
-        "position": [
-          1960,
-          200
-        ],
-        "id": "00abea37-066e-40b5-a464-894ca5f7831c",
-        "name": "Aggregate1"
-      },
-      {
-        "parameters": {
-          "maxItems": 3
-        },
-        "type": "n8n-nodes-base.limit",
-        "typeVersion": 1,
-        "position": [
-          1360,
-          200
-        ],
-        "id": "8703b13f-c4ae-4042-ba69-0bf705666cd1",
-        "name": "Limit"
-      },
-      {
-        "parameters": {
-          "assignments": {
-            "assignments": [
-              {
-                "id": "169ce734-0077-4c34-b7f1-40a35184fad6",
-                "name": "url",
-                "value": "={{ $json.url }}",
-                "type": "string"
-              },
-              {
-                "id": "310e45f1-904e-4350-971f-a8519a49ab91",
-                "name": "title",
-                "value": "={{ $json.title }}",
-                "type": "string"
-              },
-              {
-                "id": "f6ac5cd2-4504-4f37-a766-33bc6ef09d47",
-                "name": "content",
-                "value": "={{ $json.content }}",
-                "type": "string"
-              }
-            ]
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.set",
-        "typeVersion": 3.4,
-        "position": [
-          1160,
-          200
-        ],
-        "id": "effa6fe3-5ec4-4a57-b1f4-c91456038771",
-        "name": "Edit Fields2"
-      },
-      {
-        "parameters": {
-          "fieldToSplitOut": "results",
-          "options": {}
-        },
-        "type": "n8n-nodes-base.splitOut",
-        "typeVersion": 1,
-        "position": [
-          960,
-          200
-        ],
-        "id": "e93af3c9-877f-488f-831e-0357921cd26c",
-        "name": "Split Out"
-      },
-      {
-        "parameters": {
-          "url": "=http://searxng:8080/search?q={{ $json.query }}&format=json",
-          "options": {}
-        },
-        "type": "n8n-nodes-base.httpRequest",
-        "typeVersion": 4.2,
-        "position": [
-          760,
-          200
-        ],
-        "id": "dada07b6-8a05-494d-8dd0-823462cc79eb",
-        "name": "SearXNG"
-      },
-      {
-        "parameters": {
-          "workflowInputs": {
-            "values": [
-              {
-                "name": "query"
-              }
-            ]
+  "active": false,
+  "connections": {
+    "HTML": {
+      "main": [
+        [
+          {
+            "node": "Aggregate1",
+            "type": "main",
+            "index": 0
           }
-        },
-        "type": "n8n-nodes-base.executeWorkflowTrigger",
-        "typeVersion": 1.1,
-        "position": [
-          560,
-          200
-        ],
-        "id": "f39d0e3e-775a-4904-ae9d-cdcbcc8e26c3",
-        "name": "Tool Start"
-      }
-    ],
-    "connections": {
-      "HTML": {
-        "main": [
-          [
-            {
-              "node": "Aggregate1",
-              "type": "main",
-              "index": 0
-            }
-          ]
         ]
-      },
-      "HTTP Request": {
-        "main": [
-          [
-            {
-              "node": "HTML",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Limit": {
-        "main": [
-          [
-            {
-              "node": "HTTP Request",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Edit Fields2": {
-        "main": [
-          [
-            {
-              "node": "Limit",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Split Out": {
-        "main": [
-          [
-            {
-              "node": "Edit Fields2",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "SearXNG": {
-        "main": [
-          [
-            {
-              "node": "Split Out",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Tool Start": {
-        "main": [
-          [
-            {
-              "node": "SearXNG",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      }
+      ]
     },
-    "settings": {
-      "executionOrder": "v1"
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
-    "staticData": null,
-    "meta": null,
-    "pinData": {},
-    "versionId": "6883dc3e-248f-4c75-91c8-6bf6a7d03f15",
-    "triggerCount": 0,
-    "tags": [
-      {
-        "createdAt": "2025-06-24T05:57:29.533Z",
-        "updatedAt": "2025-06-24T05:57:29.533Z",
-        "id": "0TQNWPOpix39gaQQ",
-        "name": "Tool"
-      }
-    ]
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SearXNG": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tool Start": {
+      "main": [
+        [
+          {
+            "node": "SearXNG",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
   },
-  "repo_name": "n8n-backup",
-  "repo_owner": "engineering-justpro",
-  "repo_path": "workflows"
+  "createdAt": "2025-06-27T09:05:47.804Z",
+  "id": "VmngVhYz2z8MElN8",
+  "isArchived": false,
+  "meta": null,
+  "name": "Web Search",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "extractHtmlContent",
+        "extractionValues": {
+          "values": [
+            {
+              "key": "site_html",
+              "cssSelector": "body"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1.2,
+      "position": [
+        1760,
+        200
+      ],
+      "id": "3262d887-9580-48e2-9312-30930b34b1a0",
+      "name": "HTML",
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.url }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1560,
+        200
+      ],
+      "id": "56b0f20e-1c87-48d6-abd3-c7a6c8fd02c8",
+      "name": "HTTP Request",
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "search_results",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1960,
+        200
+      ],
+      "id": "00abea37-066e-40b5-a464-894ca5f7831c",
+      "name": "Aggregate1"
+    },
+    {
+      "parameters": {
+        "maxItems": 3
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        1360,
+        200
+      ],
+      "id": "8703b13f-c4ae-4042-ba69-0bf705666cd1",
+      "name": "Limit"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "169ce734-0077-4c34-b7f1-40a35184fad6",
+              "name": "url",
+              "value": "={{ $json.url }}",
+              "type": "string"
+            },
+            {
+              "id": "310e45f1-904e-4350-971f-a8519a49ab91",
+              "name": "title",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "f6ac5cd2-4504-4f37-a766-33bc6ef09d47",
+              "name": "content",
+              "value": "={{ $json.content }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1160,
+        200
+      ],
+      "id": "effa6fe3-5ec4-4a57-b1f4-c91456038771",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "results",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        960,
+        200
+      ],
+      "id": "e93af3c9-877f-488f-831e-0357921cd26c",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "url": "=http://searxng:8080/search?q={{ $json.query }}&format=json",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        760,
+        200
+      ],
+      "id": "dada07b6-8a05-494d-8dd0-823462cc79eb",
+      "name": "SearXNG"
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "query"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        560,
+        200
+      ],
+      "id": "f39d0e3e-775a-4904-ae9d-cdcbcc8e26c3",
+      "name": "Tool Start"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-06-24T05:57:29.533Z",
+      "updatedAt": "2025-06-24T05:57:29.533Z",
+      "id": "0TQNWPOpix39gaQQ",
+      "name": "Tool"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-27T09:07:37.202Z",
+  "versionId": "6883dc3e-248f-4c75-91c8-6bf6a7d03f15"
 }
