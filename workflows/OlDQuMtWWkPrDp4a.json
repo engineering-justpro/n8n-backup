@@ -1,414 +1,409 @@
 {
-  "input": {
-    "createdAt": "2025-06-16T04:32:07.244Z",
-    "updatedAt": "2025-06-20T09:46:09.072Z",
-    "id": "OlDQuMtWWkPrDp4a",
-    "name": "[Main] Odoo Ticket Workflow",
-    "active": false,
-    "isArchived": false,
-    "nodes": [
-      {
-        "parameters": {
-          "resource": "custom",
-          "customResource": "helpdesk.ticket",
-          "operation": "getAll",
-          "limit": 1,
-          "options": {
-            "fieldsList": [
-              "description",
-              "id",
-              "x_studio_ai_type",
-              "tag_ids",
-              "ticket_type_id"
-            ]
-          },
-          "filterRequest": {
-            "filter": [
-              {
-                "fieldName": "company_id",
-                "value": "810 - Shanghai French School"
-              },
-              {
-                "fieldName": "=stage_id",
-                "value": "=New"
-              }
-            ]
+  "active": false,
+  "connections": {
+    "Odoo": {
+      "main": [
+        [
+          {
+            "node": "提取关键字",
+            "type": "main",
+            "index": 0
           }
-        },
-        "type": "n8n-nodes-base.odoo",
-        "typeVersion": 1,
-        "position": [
-          -480,
-          180
-        ],
-        "id": "b8af4ea5-efbf-4081-9a9c-c6cdb9af318c",
-        "name": "Odoo",
-        "notesInFlow": true,
-        "credentials": {
-          "odooApi": {
-            "id": "d1Xjz65wvyWyrZGA",
-            "name": "Odoo account"
-          }
-        },
-        "notes": "Get data from helpdesk ticket"
-      },
-      {
-        "parameters": {
-          "promptType": "define",
-          "text": "=问题：{{ $('Odoo').item.json.description.replace(/<[^>]*>/g, '').trim()}}\n\n知识库回答：{{ $('Execute Workflow').item.json.output }}\n\n在Tools工具中检索与客户提出问题相关的知识，并基于Solution字段的值、结合你的过往经验给我答案。\n如果不存在相关的知识，结合你自己的经验给出建议。",
-          "options": {
-            "systemMessage": "你是一个热情专业的Odoo支持助手，请尽可能用中文解答客户的问题。"
-          }
-        },
-        "type": "@n8n/n8n-nodes-langchain.agent",
-        "typeVersion": 2,
-        "position": [
-          160,
-          180
-        ],
-        "id": "914c47aa-0aba-4778-be38-758822bc2441",
-        "name": "AI Agent"
-      },
-      {
-        "parameters": {
-          "promptType": "define",
-          "text": "={{ $json.description }}",
-          "options": {
-            "systemMessage": "作为一个资深的Odoo顾问，需要对客户提出的问题或需求进行分析，并提取1个简洁的关键字，用中文\n"
-          }
-        },
-        "type": "@n8n/n8n-nodes-langchain.agent",
-        "typeVersion": 2,
-        "position": [
-          -320,
-          180
-        ],
-        "id": "b1b03552-9379-4b8e-a15b-769979c9addb",
-        "name": "提取关键字"
-      },
-      {
-        "parameters": {
-          "resource": "custom",
-          "customResource": "helpdesk.ticket",
-          "operation": "update",
-          "customResourceId": "={{ $('Odoo').item.json.id }}",
-          "fieldsToCreateOrUpdate": {
-            "fields": [
-              {
-                "fieldName": "x_studio_key_word",
-                "fieldValue": "={{ $('提取关键字').item.json.output }}"
-              }
-            ]
-          }
-        },
-        "type": "n8n-nodes-base.odoo",
-        "typeVersion": 1,
-        "position": [
-          580,
-          180
-        ],
-        "id": "07ecdc26-c3de-467e-91dd-0c5da22d12a8",
-        "name": "Odoo更新关键字",
-        "credentials": {
-          "odooApi": {
-            "id": "d1Xjz65wvyWyrZGA",
-            "name": "Odoo account"
-          }
-        }
-      },
-      {
-        "parameters": {
-          "mode": "markdownToHtml",
-          "markdown": "={{ $('AI Agent').item.json.output }}",
-          "options": {}
-        },
-        "type": "n8n-nodes-base.markdown",
-        "typeVersion": 1,
-        "position": [
-          760,
-          180
-        ],
-        "id": "69c6fb96-0227-4e37-a764-5063f3e2ea41",
-        "name": "Markdown"
-      },
-      {
-        "parameters": {
-          "resource": "custom",
-          "customResource": "helpdesk.ticket",
-          "operation": "update",
-          "customResourceId": "={{ $('Odoo').item.json.id }}",
-          "fieldsToCreateOrUpdate": {
-            "fields": [
-              {
-                "fieldName": "x_studio_ai_suggestion",
-                "fieldValue": "={{ $json.data }}"
-              },
-              {
-                "fieldName": "x_studio_n8n",
-                "fieldValue": "True"
-              }
-            ]
-          }
-        },
-        "type": "n8n-nodes-base.odoo",
-        "typeVersion": 1,
-        "position": [
-          940,
-          180
-        ],
-        "id": "14d39f33-a2f9-40b5-8d8a-bcc4043bb3d9",
-        "name": "Odoo - AI Suggestion",
-        "credentials": {
-          "odooApi": {
-            "id": "d1Xjz65wvyWyrZGA",
-            "name": "Odoo account"
-          }
-        }
-      },
-      {
-        "parameters": {
-          "rule": {
-            "interval": [
-              {
-                "field": "minutes",
-                "minutesInterval": 10
-              }
-            ]
-          }
-        },
-        "type": "n8n-nodes-base.scheduleTrigger",
-        "typeVersion": 1.2,
-        "position": [
-          -700,
-          180
-        ],
-        "id": "b6440e9c-0eb7-476d-8ae9-454c144ef99f",
-        "name": "Schedule Trigger"
-      },
-      {
-        "parameters": {
-          "descriptionType": "manual",
-          "toolDescription": "=根据客户提出的问题 {{ $('Odoo').item.json.description }}，在Tool数据模型中查找类型的问题",
-          "resource": "custom",
-          "customResource": "helpdesk.ticket",
-          "operation": "getAll",
-          "limit": 10,
-          "options": {
-            "fieldsList": [
-              "x_studio_solution"
-            ]
-          },
-          "filterRequest": {
-            "filter": [
-              {
-                "fieldName": "company_id",
-                "value": "810 - Shanghai French School"
-              },
-              {
-                "fieldName": "x_studio_key_word",
-                "operator": "like",
-                "value": "={{ $('提取关键字').item.json.output }}"
-              }
-            ]
-          }
-        },
-        "type": "n8n-nodes-base.odooTool",
-        "typeVersion": 1,
-        "position": [
-          320,
-          400
-        ],
-        "id": "671aa12b-9783-42ae-8802-a38c414dd003",
-        "name": "Odoo - Solution",
-        "credentials": {
-          "odooApi": {
-            "id": "d1Xjz65wvyWyrZGA",
-            "name": "Odoo account"
-          }
-        }
-      },
-      {
-        "parameters": {
-          "model": "qwen2.5:7b",
-          "options": {}
-        },
-        "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
-        "typeVersion": 1,
-        "position": [
-          20,
-          500
-        ],
-        "id": "773db5cf-85ce-4a22-99a9-bdc1eecf0de6",
-        "name": "Ollama Chat Model1",
-        "credentials": {
-          "ollamaApi": {
-            "id": "7a1UpMdfiBqQnwIw",
-            "name": "Ollama account"
-          }
-        }
-      },
-      {
-        "parameters": {
-          "workflowId": {
-            "__rl": true,
-            "value": "4HCG78e9ayYJI1zb",
-            "mode": "list",
-            "cachedResultName": "KB Odoo AI Search"
-          },
-          "workflowInputs": {
-            "mappingMode": "defineBelow",
-            "value": {
-              "input": "={{ $('Odoo').item.json.description }}"
-            },
-            "matchingColumns": [
-              "input"
-            ],
-            "schema": [
-              {
-                "id": "input",
-                "displayName": "input",
-                "required": false,
-                "defaultMatch": false,
-                "display": true,
-                "canBeUsedToMatch": true,
-                "type": "string",
-                "removed": false
-              }
-            ],
-            "attemptToConvertTypes": false,
-            "convertFieldsToString": true
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.executeWorkflow",
-        "typeVersion": 1.2,
-        "position": [
-          0,
-          0
-        ],
-        "id": "7b6eb16a-2239-424b-9ec3-59c22127e4bc",
-        "name": "Execute Workflow"
-      }
-    ],
-    "connections": {
-      "Odoo": {
-        "main": [
-          [
-            {
-              "node": "提取关键字",
-              "type": "main",
-              "index": 0
-            }
-          ]
         ]
-      },
-      "AI Agent": {
-        "main": [
-          [
-            {
-              "node": "Odoo更新关键字",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "提取关键字": {
-        "main": [
-          [
-            {
-              "node": "Execute Workflow",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Odoo更新关键字": {
-        "main": [
-          [
-            {
-              "node": "Markdown",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Markdown": {
-        "main": [
-          [
-            {
-              "node": "Odoo - AI Suggestion",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Schedule Trigger": {
-        "main": [
-          [
-            {
-              "node": "Odoo",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Odoo - Solution": {
-        "ai_tool": [
-          [
-            {
-              "node": "AI Agent",
-              "type": "ai_tool",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Ollama Chat Model1": {
-        "ai_languageModel": [
-          [
-            {
-              "node": "提取关键字",
-              "type": "ai_languageModel",
-              "index": 0
-            },
-            {
-              "node": "AI Agent",
-              "type": "ai_languageModel",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Execute Workflow": {
-        "main": [
-          [
-            {
-              "node": "AI Agent",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      }
+      ]
     },
-    "settings": {
-      "executionOrder": "v1"
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Odoo更新关键字",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
-    "staticData": null,
-    "meta": {
-      "templateCredsSetupCompleted": true
+    "提取关键字": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
-    "pinData": {},
-    "versionId": "5119eee1-1283-40bf-ba4b-774cd4f21f0a",
-    "triggerCount": 0,
-    "tags": []
+    "Odoo更新关键字": {
+      "main": [
+        [
+          {
+            "node": "Markdown",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Markdown": {
+      "main": [
+        [
+          {
+            "node": "Odoo - AI Suggestion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo - Solution": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "提取关键字",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
   },
-  "repo_name": "n8n-backup",
-  "repo_owner": "engineering-justpro",
-  "repo_path": "workflows"
+  "createdAt": "2025-06-16T04:32:07.244Z",
+  "id": "OlDQuMtWWkPrDp4a",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "[Main] Odoo Ticket Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "helpdesk.ticket",
+        "operation": "getAll",
+        "limit": 1,
+        "options": {
+          "fieldsList": [
+            "description",
+            "id",
+            "x_studio_ai_type",
+            "tag_ids",
+            "ticket_type_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "company_id",
+              "value": "810 - Shanghai French School"
+            },
+            {
+              "fieldName": "=stage_id",
+              "value": "=New"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        -480,
+        180
+      ],
+      "id": "b8af4ea5-efbf-4081-9a9c-c6cdb9af318c",
+      "name": "Odoo",
+      "notesInFlow": true,
+      "credentials": {
+        "odooApi": {
+          "id": "d1Xjz65wvyWyrZGA",
+          "name": "Odoo account"
+        }
+      },
+      "notes": "Get data from helpdesk ticket"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=问题：{{ $('Odoo').item.json.description.replace(/<[^>]*>/g, '').trim()}}\n\n知识库回答：{{ $('Execute Workflow').item.json.output }}\n\n在Tools工具中检索与客户提出问题相关的知识，并基于Solution字段的值、结合你的过往经验给我答案。\n如果不存在相关的知识，结合你自己的经验给出建议。",
+        "options": {
+          "systemMessage": "你是一个热情专业的Odoo支持助手，请尽可能用中文解答客户的问题。"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        160,
+        180
+      ],
+      "id": "914c47aa-0aba-4778-be38-758822bc2441",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.description }}",
+        "options": {
+          "systemMessage": "作为一个资深的Odoo顾问，需要对客户提出的问题或需求进行分析，并提取1个简洁的关键字，用中文\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        -320,
+        180
+      ],
+      "id": "b1b03552-9379-4b8e-a15b-769979c9addb",
+      "name": "提取关键字"
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "helpdesk.ticket",
+        "operation": "update",
+        "customResourceId": "={{ $('Odoo').item.json.id }}",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "x_studio_key_word",
+              "fieldValue": "={{ $('提取关键字').item.json.output }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        580,
+        180
+      ],
+      "id": "07ecdc26-c3de-467e-91dd-0c5da22d12a8",
+      "name": "Odoo更新关键字",
+      "credentials": {
+        "odooApi": {
+          "id": "d1Xjz65wvyWyrZGA",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "markdownToHtml",
+        "markdown": "={{ $('AI Agent').item.json.output }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.markdown",
+      "typeVersion": 1,
+      "position": [
+        760,
+        180
+      ],
+      "id": "69c6fb96-0227-4e37-a764-5063f3e2ea41",
+      "name": "Markdown"
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "helpdesk.ticket",
+        "operation": "update",
+        "customResourceId": "={{ $('Odoo').item.json.id }}",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "x_studio_ai_suggestion",
+              "fieldValue": "={{ $json.data }}"
+            },
+            {
+              "fieldName": "x_studio_n8n",
+              "fieldValue": "True"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        940,
+        180
+      ],
+      "id": "14d39f33-a2f9-40b5-8d8a-bcc4043bb3d9",
+      "name": "Odoo - AI Suggestion",
+      "credentials": {
+        "odooApi": {
+          "id": "d1Xjz65wvyWyrZGA",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 10
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -700,
+        180
+      ],
+      "id": "b6440e9c-0eb7-476d-8ae9-454c144ef99f",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "=根据客户提出的问题 {{ $('Odoo').item.json.description }}，在Tool数据模型中查找类型的问题",
+        "resource": "custom",
+        "customResource": "helpdesk.ticket",
+        "operation": "getAll",
+        "limit": 10,
+        "options": {
+          "fieldsList": [
+            "x_studio_solution"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "company_id",
+              "value": "810 - Shanghai French School"
+            },
+            {
+              "fieldName": "x_studio_key_word",
+              "operator": "like",
+              "value": "={{ $('提取关键字').item.json.output }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.odooTool",
+      "typeVersion": 1,
+      "position": [
+        320,
+        400
+      ],
+      "id": "671aa12b-9783-42ae-8802-a38c414dd003",
+      "name": "Odoo - Solution",
+      "credentials": {
+        "odooApi": {
+          "id": "d1Xjz65wvyWyrZGA",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "qwen2.5:7b",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        20,
+        500
+      ],
+      "id": "773db5cf-85ce-4a22-99a9-bdc1eecf0de6",
+      "name": "Ollama Chat Model1",
+      "credentials": {
+        "ollamaApi": {
+          "id": "7a1UpMdfiBqQnwIw",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "4HCG78e9ayYJI1zb",
+          "mode": "list",
+          "cachedResultName": "KB Odoo AI Search"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "input": "={{ $('Odoo').item.json.description }}"
+          },
+          "matchingColumns": [
+            "input"
+          ],
+          "schema": [
+            {
+              "id": "input",
+              "displayName": "input",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "7b6eb16a-2239-424b-9ec3-59c22127e4bc",
+      "name": "Execute Workflow"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-20T09:46:09.072Z",
+  "versionId": "5119eee1-1283-40bf-ba4b-774cd4f21f0a"
 }
