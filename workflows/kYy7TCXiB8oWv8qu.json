@@ -1,85 +1,80 @@
 {
-  "input": {
-    "createdAt": "2025-06-23T04:58:48.398Z",
-    "updatedAt": "2025-06-24T07:25:19.159Z",
-    "id": "kYy7TCXiB8oWv8qu",
-    "name": "Parse Paths",
-    "active": false,
-    "isArchived": false,
-    "nodes": [
-      {
-        "parameters": {
-          "language": "python",
-          "pythonCode": "data = _json.input.split('\\n')\nresult = []\nfor idx in range(len(data)):\n  if '849C9593' not in data[idx] and '.git' not in data[idx]:\n    result.append({'json':{'file': data[idx].replace('\\\\', '/').strip()}})\n\nreturn result"
-        },
-        "type": "n8n-nodes-base.code",
-        "typeVersion": 2,
-        "position": [
-          440,
-          0
-        ],
-        "id": "57388423-1e05-4940-b40d-13858a21b930",
-        "name": "Code"
-      },
-      {
-        "parameters": {
-          "workflowInputs": {
-            "values": [
-              {
-                "name": "input"
-              }
-            ]
+  "active": false,
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
           }
-        },
-        "type": "n8n-nodes-base.executeWorkflowTrigger",
-        "typeVersion": 1.1,
-        "position": [
-          220,
-          0
-        ],
-        "id": "a521f6e2-e834-4b07-a0d9-85de170ebe61",
-        "name": "When Executed by Another Workflow"
-      }
-    ],
-    "connections": {
-      "When Executed by Another Workflow": {
-        "main": [
-          [
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-23T04:58:48.398Z",
+  "id": "kYy7TCXiB8oWv8qu",
+  "isArchived": false,
+  "meta": null,
+  "name": "Parse Paths",
+  "nodes": [
+    {
+      "parameters": {
+        "language": "python",
+        "pythonCode": "data = _json.input.split('\\n')\nresult = []\nfor idx in range(len(data)):\n  if '849C9593' not in data[idx] and '.git' not in data[idx]:\n    result.append({'json':{'file': data[idx].replace('\\\\', '/').strip()}})\n\nreturn result"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        0
+      ],
+      "id": "57388423-1e05-4940-b40d-13858a21b930",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
             {
-              "node": "Code",
-              "type": "main",
-              "index": 0
+              "name": "input"
             }
           ]
-        ]
-      }
-    },
-    "settings": {
-      "executionOrder": "v1"
-    },
-    "staticData": null,
-    "meta": null,
-    "pinData": {
-      "When Executed by Another Workflow": [
-        {
-          "json": {
-            "input": "/data/shared/code/n8n-test/.git/hooks/pre-merge-commit.sample"
-          }
         }
-      ]
-    },
-    "versionId": "3e564d9d-66bc-490d-b49d-38cac1942f97",
-    "triggerCount": 0,
-    "tags": [
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        0
+      ],
+      "id": "a521f6e2-e834-4b07-a0d9-85de170ebe61",
+      "name": "When Executed by Another Workflow"
+    }
+  ],
+  "pinData": {
+    "When Executed by Another Workflow": [
       {
-        "createdAt": "2025-06-24T05:57:29.533Z",
-        "updatedAt": "2025-06-24T05:57:29.533Z",
-        "id": "0TQNWPOpix39gaQQ",
-        "name": "Tool"
+        "json": {
+          "input": "/data/shared/code/n8n-test/.git/hooks/pre-merge-commit.sample"
+        }
       }
     ]
   },
-  "repo_name": "n8n-backup",
-  "repo_owner": "engineering-justpro",
-  "repo_path": "workflows"
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-06-24T05:57:29.533Z",
+      "updatedAt": "2025-06-24T05:57:29.533Z",
+      "id": "0TQNWPOpix39gaQQ",
+      "name": "Tool"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-24T07:25:19.159Z",
+  "versionId": "3e564d9d-66bc-490d-b49d-38cac1942f97"
 }
