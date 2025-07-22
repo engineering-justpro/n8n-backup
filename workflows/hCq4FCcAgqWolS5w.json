@@ -1,9 +1,9 @@
 {
   "createdAt": "2025-07-22T05:30:21.449Z",
-  "updatedAt": "2025-07-22T07:29:13.336Z",
+  "updatedAt": "2025-07-22T08:11:43.502Z",
   "id": "hCq4FCcAgqWolS5w",
   "name": "Backup Workflows and Credentials to GitHub",
-  "active": false,
+  "active": true,
   "isArchived": false,
   "nodes": [
     {
@@ -23,15 +23,6 @@
           "item": [
             {
               "hour": 0
-            },
-            {
-              "hour": 12
-            },
-            {
-              "hour": 6
-            },
-            {
-              "hour": 18
             }
           ]
         }
@@ -94,7 +85,14 @@
   "staticData": null,
   "meta": null,
   "pinData": {},
-  "versionId": "f261bfde-8b21-40c3-a132-6f0df79f062d",
-  "triggerCount": 0,
-  "tags": []
+  "versionId": "6a9c7e98-0bec-4869-b9c8-7eb557039c60",
+  "triggerCount": 1,
+  "tags": [
+    {
+      "createdAt": "2025-06-24T05:57:43.570Z",
+      "updatedAt": "2025-06-24T05:57:43.570Z",
+      "id": "aE9J8xMHCvJ9aubU",
+      "name": "Main"
+    }
+  ]
 }

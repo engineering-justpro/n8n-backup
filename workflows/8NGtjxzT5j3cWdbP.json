@@ -1,6 +1,6 @@
 {
   "createdAt": "2025-06-27T08:29:09.650Z",
-  "updatedAt": "2025-07-17T09:02:02.048Z",
+  "updatedAt": "2025-07-22T08:11:25.025Z",
   "id": "8NGtjxzT5j3cWdbP",
   "name": "Open WebUI Agent with Web Search",
   "active": false,
@@ -16,8 +16,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
       "typeVersion": 1,
       "position": [
-        -1020,
-        -260
+        -1024,
+        -256
       ],
       "notesInFlow": false,
       "credentials": {
@@ -66,8 +66,8 @@
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.1,
       "position": [
-        -1660,
-        -360
+        -1664,
+        -368
       ],
       "webhookId": "128c7fd7-1f0e-4320-9d91-499cbbe1a39a"
     },
@@ -84,7 +84,7 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.6,
       "position": [
-        -980,
+        -976,
         -480
       ]
     },
@@ -98,8 +98,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -1740,
-        220
+        -1744,
+        224
       ],
       "id": "1964c10e-edfb-4f61-86c0-448a21aac8eb",
       "name": "Sticky Note7"
@@ -118,7 +118,7 @@
       "typeVersion": 1.1,
       "position": [
         -1680,
-        360
+        368
       ],
       "id": "6f2c2692-84b0-457c-9cd8-7a475a8995b0",
       "name": "Tool Start"
@@ -177,8 +177,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 2,
       "position": [
-        -860,
-        -260
+        -864,
+        -256
       ],
       "id": "9d26b1bf-0dc2-40e8-b0da-b88f1e2f6609",
       "name": "Web Search Tool"
@@ -191,8 +191,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -1480,
-        360
+        -1488,
+        368
       ],
       "id": "461520d4-370e-481c-8f78-6edd6ea87423",
       "name": "SearXNG"
@@ -206,7 +206,7 @@
       "typeVersion": 1,
       "position": [
         -1280,
-        360
+        368
       ],
       "id": "b6c1be02-9bc0-45cd-b78d-09dc8b541687",
       "name": "Split Out"
@@ -240,8 +240,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -1080,
-        360
+        -1088,
+        368
       ],
       "id": "1c490ba8-87b7-4edb-90d6-c27c9ba92cdb",
       "name": "Edit Fields2"
@@ -254,7 +254,7 @@
       "typeVersion": 1,
       "position": [
         -880,
-        360
+        368
       ],
       "id": "1e1fabe5-a258-4f08-8394-9f8fba5eb24f",
       "name": "Limit"
@@ -268,8 +268,8 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        -280,
-        360
+        -288,
+        368
       ],
       "id": "36ab3b3e-1e4b-40bb-aa31-425f546c2fe3",
       "name": "Aggregate1"
@@ -282,8 +282,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -680,
-        360
+        -688,
+        368
       ],
       "id": "38d2389b-1368-4c0a-9964-3f4eac930f00",
       "name": "HTTP Request",
@@ -307,7 +307,7 @@
       "typeVersion": 1.2,
       "position": [
         -480,
-        360
+        368
       ],
       "id": "4b0f50d2-1c62-42b3-8877-a306b6aad3f1",
       "name": "HTML",
@@ -316,14 +316,14 @@
     },
     {
       "parameters": {
-        "model": "qwen2.5:14b-instruct-q4_K_M",
+        "model": "qwen2.5:7b-instruct-q4_K_M",
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
       "typeVersion": 1,
       "position": [
-        -1180,
-        -260
+        -1184,
+        -256
       ],
       "id": "4a88e757-3746-4d86-8473-80656434ac97",
       "name": "Ollama Chat Model",
@@ -351,8 +351,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -540,
-        -260
+        -544,
+        -256
       ],
       "id": "68b1c7ad-2ff9-4cc4-877d-6aa30e87fcfd",
       "name": "Edit Fields (Set Output Field)"
@@ -365,8 +365,8 @@
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.5,
       "position": [
-        -1100,
-        -100
+        -1104,
+        -96
       ],
       "id": "4bc2c2b0-ace5-4290-be29-4c73f9d0ed12",
       "name": "Open WebUI Metadata LLM"
@@ -398,8 +398,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -1420,
-        -140
+        -1424,
+        -144
       ],
       "id": "3306140e-db0f-4efa-ae4b-87ab4389f0b6",
       "name": "Chat message or metadata request?"
@@ -413,8 +413,8 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.1,
       "position": [
-        -300,
-        -260
+        -304,
+        -256
       ]
     },
     {
@@ -430,8 +430,8 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -1660,
-        -140
+        -1664,
+        -144
       ],
       "webhookId": "7f8a71dd-b98a-4c87-aa3c-c0f7c3b63535",
       "credentials": {
@@ -449,8 +449,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
       "typeVersion": 1,
       "position": [
-        -1020,
-        60
+        -1024,
+        64
       ],
       "id": "4f98290b-644b-4f26-8979-8b1ddd3006f9",
       "name": "Ollama Chat Model1",
@@ -471,7 +471,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -1740,
+        -1744,
         -560
       ],
       "id": "4498ec28-9135-4707-b701-033e80902328",
@@ -694,7 +694,14 @@
     "instanceId": "73cb7a3e883df514bb47e8d1b34526d30e2abb8f56cd99f10d5948a1e11b25aa"
   },
   "pinData": {},
-  "versionId": "0183f370-583c-41e0-add0-633c0dd2d272",
+  "versionId": "85e4883e-a6c2-4db3-8239-14db58db69c7",
   "triggerCount": 2,
-  "tags": []
+  "tags": [
+    {
+      "createdAt": "2025-06-24T05:57:43.570Z",
+      "updatedAt": "2025-06-24T05:57:43.570Z",
+      "id": "aE9J8xMHCvJ9aubU",
+      "name": "Main"
+    }
+  ]
 }
