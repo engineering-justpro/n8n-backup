@@ -1,6 +1,6 @@
 {
   "createdAt": "2025-07-22T05:30:21.449Z",
-  "updatedAt": "2025-07-22T05:42:10.477Z",
+  "updatedAt": "2025-07-22T06:32:35.815Z",
   "id": "hCq4FCcAgqWolS5w",
   "name": "Backup workflow and credential",
   "active": false,
@@ -19,7 +19,7 @@
     },
     {
       "parameters": {
-        "command": "npx n8n export:workflow --backup --output /backup/workflows/\n\nnpx n8n export:credentials --backup --output /backup/credentials/\n\ncd /backup\n"
+        "command": "npx n8n export:workflow --backup --output /backup/workflows/\nnpx n8n export:credentials --backup --output /backup/credentials/\n\ncd /backup\n\ngit add .\ngit commit -m \"Auto backup ({{ new Date().toISOString() }})\"\ngit push"
       },
       "name": "git add",
       "type": "n8n-nodes-base.executeCommand",
@@ -94,7 +94,7 @@
   "staticData": null,
   "meta": null,
   "pinData": {},
-  "versionId": "a6d99fb1-b34f-4177-83e9-36ecbd9a9acc",
+  "versionId": "f18d1006-ead8-4721-9a3d-9d93a439e4ed",
   "triggerCount": 0,
   "tags": []
 }
