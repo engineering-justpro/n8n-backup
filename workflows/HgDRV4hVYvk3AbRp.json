@@ -1,0 +1,181 @@
+{
+  "createdAt": "2025-06-16T04:30:22.363Z",
+  "updatedAt": "2025-06-24T05:58:44.238Z",
+  "id": "HgDRV4hVYvk3AbRp",
+  "name": "Get All Local File Paths",
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "command": "=find {{$('Global Constants').item.json.constants.kb_path }} -type f -print"
+      },
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        460,
+        0
+      ],
+      "id": "051c4fc2-efb6-4c36-8560-a52994637b29",
+      "name": "Execute Command"
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "folder"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "3835eb25-7b9e-4aa5-a10b-67b8574b3012",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        200
+      ],
+      "id": "035a4f14-ac50-4d3a-8ddf-3de10087889a",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-globals.globalConstants",
+      "typeVersion": 1,
+      "position": [
+        220,
+        0
+      ],
+      "id": "e5116aee-7323-4030-aad5-70dad962b044",
+      "name": "Global Constants",
+      "credentials": {
+        "globalConstantsApi": {
+          "id": "68bBK9HWj7ci7hNr",
+          "name": "Global Constants account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "kYy7TCXiB8oWv8qu",
+          "mode": "list",
+          "cachedResultName": "[Tool] Parse Paths"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "input": "={{ $json.stdout }}"
+          },
+          "matchingColumns": [
+            "input"
+          ],
+          "schema": [
+            {
+              "id": "input",
+              "displayName": "input",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        680,
+        0
+      ],
+      "id": "4d400728-8a00-4da6-8b2a-6455495a722e",
+      "name": "Parse Paths"
+    }
+  ],
+  "connections": {
+    "Execute Command": {
+      "main": [
+        [
+          {
+            "node": "Parse Paths",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Global Constants",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Global Constants",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Global Constants": {
+      "main": [
+        [
+          {
+            "node": "Execute Command",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Paths": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "pinData": {},
+  "versionId": "af5e04ee-63b0-472b-bfeb-2e8a52430837",
+  "triggerCount": 0,
+  "tags": [
+    {
+      "createdAt": "2025-06-24T05:57:29.533Z",
+      "updatedAt": "2025-06-24T05:57:29.533Z",
+      "id": "0TQNWPOpix39gaQQ",
+      "name": "Tool"
+    }
+  ]
+}

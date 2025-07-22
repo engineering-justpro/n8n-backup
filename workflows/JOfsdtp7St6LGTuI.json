@@ -1,0 +1,156 @@
+{
+  "createdAt": "2025-06-24T03:15:53.579Z",
+  "updatedAt": "2025-07-22T03:57:56.722Z",
+  "id": "JOfsdtp7St6LGTuI",
+  "name": "Get All Local KB Names",
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "command": "=find {{$('Global Constants').item.json.constants.kb_path }} -mindepth 1 -type d -maxdepth 1 -exec basename {} \\;"
+      },
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        528,
+        0
+      ],
+      "id": "3c33e91e-b772-4b84-a902-8c0839320b67",
+      "name": "Execute Command"
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "input"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "ab93b077-6ca8-46ad-9cc3-b6dcff301c30",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        208
+      ],
+      "id": "04c0ba76-ed59-489e-a4ba-596a31954395",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-globals.globalConstants",
+      "typeVersion": 1,
+      "position": [
+        272,
+        0
+      ],
+      "id": "b729ff6b-8566-48f5-8beb-c461670d60e0",
+      "name": "Global Constants",
+      "credentials": {
+        "globalConstantsApi": {
+          "id": "68bBK9HWj7ci7hNr",
+          "name": "Global Constants account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "language": "python",
+        "pythonCode": "data = _json.stdout.split('\\n')\nresult = []\nfor idx in range(len(data)):\n    result.append({'json':{'file': data[idx].replace('\\\\', '/').strip()}})\n\nreturn result"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        752,
+        0
+      ],
+      "id": "c731ada0-70c1-4244-b203-b9f5ded72c85",
+      "name": "Code"
+    }
+  ],
+  "connections": {
+    "Execute Command": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Global Constants",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Global Constants",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Global Constants": {
+      "main": [
+        [
+          {
+            "node": "Execute Command",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "pinData": {
+    "When Executed by Another Workflow": [
+      {
+        "json": {
+          "input": "Hi"
+        }
+      }
+    ]
+  },
+  "versionId": "f0e64bb9-3e08-4f27-939e-17a5b6a7cd5a",
+  "triggerCount": 0,
+  "tags": [
+    {
+      "createdAt": "2025-06-24T05:57:29.533Z",
+      "updatedAt": "2025-06-24T05:57:29.533Z",
+      "id": "0TQNWPOpix39gaQQ",
+      "name": "Tool"
+    }
+  ]
+}

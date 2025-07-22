@@ -1,0 +1,100 @@
+{
+  "createdAt": "2025-07-22T05:30:21.449Z",
+  "updatedAt": "2025-07-22T07:29:13.336Z",
+  "id": "hCq4FCcAgqWolS5w",
+  "name": "Backup Workflows and Credentials to GitHub",
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        -336,
+        272
+      ],
+      "typeVersion": 1,
+      "id": "1f73d586-1e3c-4ad7-8e62-a401f3ee92aa"
+    },
+    {
+      "parameters": {
+        "triggerTimes": {
+          "item": [
+            {
+              "hour": 0
+            },
+            {
+              "hour": 12
+            },
+            {
+              "hour": 6
+            },
+            {
+              "hour": 18
+            }
+          ]
+        }
+      },
+      "name": "Cron",
+      "type": "n8n-nodes-base.cron",
+      "position": [
+        -336,
+        64
+      ],
+      "typeVersion": 1,
+      "id": "ed4142a9-c3a0-49aa-8472-3a19f80902b8"
+    },
+    {
+      "parameters": {
+        "command": "/tasks/push.sh"
+      },
+      "name": "Execute Command",
+      "type": "n8n-nodes-base.executeCommand",
+      "position": [
+        -64,
+        176
+      ],
+      "typeVersion": 1,
+      "id": "3419efd6-83be-4a7b-b0f0-b4a9656317f3"
+    }
+  ],
+  "connections": {
+    "Cron": {
+      "main": [
+        [
+          {
+            "node": "Execute Command",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Execute Command",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Command": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": null,
+  "pinData": {},
+  "versionId": "f261bfde-8b21-40c3-a132-6f0df79f062d",
+  "triggerCount": 0,
+  "tags": []
+}
