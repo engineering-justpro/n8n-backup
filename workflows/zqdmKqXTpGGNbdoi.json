@@ -20,7 +20,7 @@
       "name": "Embeddings Ollama",
       "credentials": {
         "ollamaApi": {
-          "id": "7a1UpMdfiBqQnwIw",
+          "id": "Up6uCxyZ2GVh8ax8",
           "name": "Ollama account"
         }
       }
@@ -64,7 +64,7 @@
       "retryOnFail": true,
       "credentials": {
         "supabaseApi": {
-          "id": "EDe1odkkGf1KtTQD",
+          "id": "7kKQPQnrYNYdRgyX",
           "name": "Supabase account"
         }
       }
@@ -98,7 +98,7 @@
       "name": "Ollama Chat Model",
       "credentials": {
         "ollamaApi": {
-          "id": "7a1UpMdfiBqQnwIw",
+          "id": "Up6uCxyZ2GVh8ax8",
           "name": "Ollama account"
         }
       }

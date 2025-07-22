@@ -1,10 +1,10 @@
 {
   "createdAt": "2025-07-22T03:42:15.383Z",
-  "updatedAt": "2025-07-22T03:48:12.356Z",
+  "updatedAt": "2025-07-22T06:59:04.499Z",
   "id": "YzkpoKcFuM1XhUwP",
   "name": "My workflow 2",
   "active": false,
-  "isArchived": false,
+  "isArchived": true,
   "nodes": [
     {
       "parameters": {},
@@ -66,7 +66,7 @@
       "name": "Global Constants",
       "credentials": {
         "globalConstantsApi": {
-          "id": "L5SpLFqNv9tHGuav",
+          "id": "68bBK9HWj7ci7hNr",
           "name": "Global Constants account"
         }
       }
@@ -93,7 +93,7 @@
     "templateCredsSetupCompleted": true
   },
   "pinData": {},
-  "versionId": "00e0f967-b1fc-4d5e-927e-ed97b8d45f7a",
+  "versionId": "4180e5fa-8323-4ae3-af6f-75ecc311db04",
   "triggerCount": 0,
   "tags": []
 }

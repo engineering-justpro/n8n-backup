@@ -18,7 +18,7 @@
       ],
       "credentials": {
         "postgres": {
-          "id": "lHRWUirPLXEG7Xmh",
+          "id": "N8yX2KlIErLNGmDT",
           "name": "Postgres account"
         }
       }
@@ -38,7 +38,7 @@
       ],
       "credentials": {
         "ollamaApi": {
-          "id": "7a1UpMdfiBqQnwIw",
+          "id": "Up6uCxyZ2GVh8ax8",
           "name": "Ollama account"
         }
       }
@@ -58,7 +58,7 @@
       ],
       "credentials": {
         "ollamaApi": {
-          "id": "7a1UpMdfiBqQnwIw",
+          "id": "Up6uCxyZ2GVh8ax8",
           "name": "Ollama account"
         }
       }
@@ -143,7 +143,7 @@
       ],
       "credentials": {
         "ollamaApi": {
-          "id": "7a1UpMdfiBqQnwIw",
+          "id": "Up6uCxyZ2GVh8ax8",
           "name": "Ollama account"
         }
       }
@@ -303,7 +303,7 @@
       "name": "Supabase Vector Store",
       "credentials": {
         "supabaseApi": {
-          "id": "EDe1odkkGf1KtTQD",
+          "id": "7kKQPQnrYNYdRgyX",
           "name": "Supabase account"
         }
       }
@@ -322,7 +322,7 @@
       "name": "Embeddings Ollama2",
       "credentials": {
         "ollamaApi": {
-          "id": "7a1UpMdfiBqQnwIw",
+          "id": "Up6uCxyZ2GVh8ax8",
           "name": "Ollama account"
         }
       }
@@ -350,7 +350,7 @@
       "name": "Supabase Vector Store1",
       "credentials": {
         "supabaseApi": {
-          "id": "EDe1odkkGf1KtTQD",
+          "id": "7kKQPQnrYNYdRgyX",
           "name": "Supabase account"
         }
       }
@@ -373,7 +373,7 @@
       "alwaysOutputData": true,
       "credentials": {
         "supabaseApi": {
-          "id": "EDe1odkkGf1KtTQD",
+          "id": "7kKQPQnrYNYdRgyX",
           "name": "Supabase account"
         }
       }

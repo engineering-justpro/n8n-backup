@@ -94,7 +94,7 @@
       "notesInFlow": false,
       "credentials": {
         "postgres": {
-          "id": "lHRWUirPLXEG7Xmh",
+          "id": "N8yX2KlIErLNGmDT",
           "name": "Postgres account"
         }
       }
@@ -486,7 +486,7 @@
       "name": "Create Document Metadata Table",
       "credentials": {
         "postgres": {
-          "id": "lHRWUirPLXEG7Xmh",
+          "id": "N8yX2KlIErLNGmDT",
           "name": "Postgres account"
         }
       }
@@ -507,7 +507,7 @@
       "name": "Create Document Rows Table (for Tabular Data)",
       "credentials": {
         "postgres": {
-          "id": "lHRWUirPLXEG7Xmh",
+          "id": "N8yX2KlIErLNGmDT",
           "name": "Postgres account"
         }
       }
@@ -541,7 +541,7 @@
       "name": "List Documents",
       "credentials": {
         "postgres": {
-          "id": "lHRWUirPLXEG7Xmh",
+          "id": "N8yX2KlIErLNGmDT",
           "name": "Postgres account"
         }
       }
@@ -566,7 +566,7 @@
       "name": "Get File Contents",
       "credentials": {
         "postgres": {
-          "id": "lHRWUirPLXEG7Xmh",
+          "id": "N8yX2KlIErLNGmDT",
           "name": "Postgres account"
         }
       }
@@ -589,7 +589,7 @@
       "name": "Query Document Rows",
       "credentials": {
         "postgres": {
-          "id": "lHRWUirPLXEG7Xmh",
+          "id": "N8yX2KlIErLNGmDT",
           "name": "Postgres account"
         }
       }
@@ -698,7 +698,7 @@
       "executeOnce": true,
       "credentials": {
         "postgres": {
-          "id": "lHRWUirPLXEG7Xmh",
+          "id": "N8yX2KlIErLNGmDT",
           "name": "Postgres account"
         }
       }
@@ -772,7 +772,7 @@
       "name": "Insert Table Rows",
       "credentials": {
         "postgres": {
-          "id": "lHRWUirPLXEG7Xmh",
+          "id": "N8yX2KlIErLNGmDT",
           "name": "Postgres account"
         }
       }
@@ -866,7 +866,7 @@
       "name": "Update Schema for Document Metadata",
       "credentials": {
         "postgres": {
-          "id": "lHRWUirPLXEG7Xmh",
+          "id": "N8yX2KlIErLNGmDT",
           "name": "Postgres account"
         }
       }
@@ -939,7 +939,7 @@
       "name": "Embeddings Ollama",
       "credentials": {
         "ollamaApi": {
-          "id": "7a1UpMdfiBqQnwIw",
+          "id": "Up6uCxyZ2GVh8ax8",
           "name": "Ollama account"
         }
       }
@@ -958,7 +958,7 @@
       "name": "Embeddings Ollama1",
       "credentials": {
         "ollamaApi": {
-          "id": "7a1UpMdfiBqQnwIw",
+          "id": "Up6uCxyZ2GVh8ax8",
           "name": "Ollama account"
         }
       }
@@ -1036,7 +1036,7 @@
       "name": "Delete Old Doc Records",
       "credentials": {
         "postgres": {
-          "id": "lHRWUirPLXEG7Xmh",
+          "id": "N8yX2KlIErLNGmDT",
           "name": "Postgres account"
         }
       }
@@ -1059,7 +1059,7 @@
       "name": "Delete Old Data Records",
       "credentials": {
         "postgres": {
-          "id": "lHRWUirPLXEG7Xmh",
+          "id": "N8yX2KlIErLNGmDT",
           "name": "Postgres account"
         }
       }
@@ -1080,7 +1080,7 @@
       "name": "Postgres PGVector Store",
       "credentials": {
         "postgres": {
-          "id": "lHRWUirPLXEG7Xmh",
+          "id": "N8yX2KlIErLNGmDT",
           "name": "Postgres account"
         }
       }
@@ -1103,7 +1103,7 @@
       "name": "Postgres PGVector Store1",
       "credentials": {
         "postgres": {
-          "id": "lHRWUirPLXEG7Xmh",
+          "id": "N8yX2KlIErLNGmDT",
           "name": "Postgres account"
         }
       }

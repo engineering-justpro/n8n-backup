@@ -22,7 +22,7 @@
       "notesInFlow": false,
       "credentials": {
         "postgres": {
-          "id": "lHRWUirPLXEG7Xmh",
+          "id": "N8yX2KlIErLNGmDT",
           "name": "Postgres account"
         }
       }
@@ -329,7 +329,7 @@
       "name": "Ollama Chat Model",
       "credentials": {
         "ollamaApi": {
-          "id": "7a1UpMdfiBqQnwIw",
+          "id": "Up6uCxyZ2GVh8ax8",
           "name": "Ollama account"
         }
       }
@@ -456,7 +456,7 @@
       "name": "Ollama Chat Model1",
       "credentials": {
         "ollamaApi": {
-          "id": "7a1UpMdfiBqQnwIw",
+          "id": "Up6uCxyZ2GVh8ax8",
           "name": "Ollama account"
         }
       }

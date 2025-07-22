@@ -25,7 +25,7 @@
       "retryOnFail": true,
       "credentials": {
         "supabaseApi": {
-          "id": "EDe1odkkGf1KtTQD",
+          "id": "7kKQPQnrYNYdRgyX",
           "name": "Supabase account"
         }
       }
@@ -206,7 +206,7 @@
       "name": "Global Constants",
       "credentials": {
         "globalConstantsApi": {
-          "id": "q2fHPkJigPYeQHLM",
+          "id": "68bBK9HWj7ci7hNr",
           "name": "Global Constants account"
         }
       }

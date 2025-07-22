@@ -100,7 +100,7 @@
       "typeVersion": 4.2,
       "credentials": {
         "githubApi": {
-          "id": "Yczo7OWK3hcrJOik",
+          "id": "2KGdWhJbDRdP43AA",
           "name": "GitHub account"
         }
       }
@@ -148,7 +148,7 @@
       "webhookId": "26166e66-099b-44e7-94d2-3cb408c7ff88",
       "credentials": {
         "githubApi": {
-          "id": "Yczo7OWK3hcrJOik",
+          "id": "2KGdWhJbDRdP43AA",
           "name": "GitHub account"
         }
       }
@@ -183,7 +183,7 @@
       "typeVersion": 1,
       "credentials": {
         "n8nApi": {
-          "id": "TaJWhFjrrPca8VwE",
+          "id": "ap0erZwL76WsrTDU",
           "name": "n8n account"
         }
       }

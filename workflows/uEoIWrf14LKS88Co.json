@@ -1,10 +1,10 @@
 {
   "createdAt": "2025-07-16T09:24:33.620Z",
-  "updatedAt": "2025-07-22T05:24:55.684Z",
+  "updatedAt": "2025-07-22T06:59:01.402Z",
   "id": "uEoIWrf14LKS88Co",
   "name": "Backup workflows to GitHub",
   "active": false,
-  "isArchived": false,
+  "isArchived": true,
   "nodes": [
     {
       "parameters": {},
@@ -32,7 +32,7 @@
       "typeVersion": 1,
       "credentials": {
         "n8nApi": {
-          "id": "TaJWhFjrrPca8VwE",
+          "id": "ap0erZwL76WsrTDU",
           "name": "n8n account"
         }
       }
@@ -750,7 +750,7 @@
     "templateCredsSetupCompleted": true
   },
   "pinData": {},
-  "versionId": "98af2c82-7d87-42ff-a5a4-70dead0f65df",
+  "versionId": "46c2adb5-0629-4d5c-b22d-43dc00542878",
   "triggerCount": 0,
   "tags": []
 }

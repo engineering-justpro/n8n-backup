@@ -30,7 +30,7 @@
       "name": "Supabase Delete Execution Entity",
       "credentials": {
         "supabaseApi": {
-          "id": "EDe1odkkGf1KtTQD",
+          "id": "7kKQPQnrYNYdRgyX",
           "name": "Supabase account"
         }
       }
@@ -59,7 +59,7 @@
       "name": "Supabase Get Execution Entities",
       "credentials": {
         "supabaseApi": {
-          "id": "EDe1odkkGf1KtTQD",
+          "id": "7kKQPQnrYNYdRgyX",
           "name": "Supabase account"
         }
       }
