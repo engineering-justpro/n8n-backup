@@ -1,69 +1,10 @@
 {
-  "active": false,
-  "connections": {
-    "Input": {
-      "main": [
-        [
-          {
-            "node": "Get All Local KB Names",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get All Local KB Names": {
-      "main": [
-        [
-          {
-            "node": "AI Search By One KB",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "AI Search By One KB": {
-      "main": [
-        [
-          {
-            "node": "Code",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Code": {
-      "main": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Ollama Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    }
-  },
   "createdAt": "2025-06-16T04:31:31.095Z",
+  "updatedAt": "2025-06-30T03:12:49.254Z",
   "id": "NZjbMUincQLwuGqe",
-  "isArchived": false,
-  "meta": {
-    "templateCredsSetupCompleted": true
-  },
   "name": "AI Search By All KBs",
+  "active": false,
+  "isArchived": false,
   "nodes": [
     {
       "parameters": {
@@ -246,6 +187,70 @@
       }
     }
   ],
+  "connections": {
+    "Input": {
+      "main": [
+        [
+          {
+            "node": "Get All Local KB Names",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get All Local KB Names": {
+      "main": [
+        [
+          {
+            "node": "AI Search By One KB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Search By One KB": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "pinData": {
     "Input": [
       {
@@ -255,10 +260,8 @@
       }
     ]
   },
-  "settings": {
-    "executionOrder": "v1"
-  },
-  "staticData": null,
+  "versionId": "4baa1680-1a1e-4a42-90ca-ba21c3d81231",
+  "triggerCount": 0,
   "tags": [
     {
       "createdAt": "2025-06-24T05:57:43.570Z",
@@ -272,8 +275,5 @@
       "id": "0TQNWPOpix39gaQQ",
       "name": "Tool"
     }
-  ],
-  "triggerCount": 0,
-  "updatedAt": "2025-06-30T03:12:49.254Z",
-  "versionId": "4baa1680-1a1e-4a42-90ca-ba21c3d81231"
+  ]
 }

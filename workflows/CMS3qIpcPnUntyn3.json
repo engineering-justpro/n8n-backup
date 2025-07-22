@@ -1,146 +1,10 @@
 {
-  "active": false,
-  "connections": {
-    "Odoo": {
-      "main": [
-        [
-          {
-            "node": "提取邮件文本",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "提取关键字": {
-      "main": [
-        [
-          {
-            "node": "Odoo Website AI Response",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Odoo更新关键字": {
-      "main": [
-        [
-          {
-            "node": "Markdown",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "AI Agent": {
-      "main": [
-        [
-          {
-            "node": "Odoo更新关键字",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Markdown": {
-      "main": [
-        [
-          {
-            "node": "Odoo - AI Suggestion",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Schedule Trigger": {
-      "main": [
-        [
-          {
-            "node": "Odoo",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Odoo - Solution": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Odoo Website AI Response": {
-      "main": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "提取邮件文本": {
-      "main": [
-        [
-          {
-            "node": "提取关键字",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Ollama Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "提取邮件文本",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Ollama Chat Model1": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "提取关键字",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Ollama Chat Model2": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    }
-  },
   "createdAt": "2025-06-19T02:30:31.902Z",
+  "updatedAt": "2025-06-20T09:46:35.366Z",
   "id": "CMS3qIpcPnUntyn3",
-  "isArchived": false,
-  "meta": {
-    "templateCredsSetupCompleted": true
-  },
   "name": "[Main] Odoo_LFS_Helpdesk_Link_Odoo_AI_v2",
+  "active": false,
+  "isArchived": false,
   "nodes": [
     {
       "parameters": {
@@ -468,11 +332,150 @@
       }
     }
   ],
-  "pinData": {},
+  "connections": {
+    "Odoo": {
+      "main": [
+        [
+          {
+            "node": "提取邮件文本",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "提取关键字": {
+      "main": [
+        [
+          {
+            "node": "Odoo Website AI Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo更新关键字": {
+      "main": [
+        [
+          {
+            "node": "Markdown",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Odoo更新关键字",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Markdown": {
+      "main": [
+        [
+          {
+            "node": "Odoo - AI Suggestion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo - Solution": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo Website AI Response": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "提取邮件文本": {
+      "main": [
+        [
+          {
+            "node": "提取关键字",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "提取邮件文本",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "提取关键字",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "pinData": {},
+  "versionId": "d3c734d0-6b07-4bf0-81b1-f8ac1c84944f",
+  "triggerCount": 0,
   "tags": [
     {
       "createdAt": "2025-06-19T02:30:16.751Z",
@@ -480,8 +483,5 @@
       "id": "Z5jOqAwdomiwwP6W",
       "name": "LFS"
     }
-  ],
-  "triggerCount": 0,
-  "updatedAt": "2025-06-20T09:46:35.366Z",
-  "versionId": "d3c734d0-6b07-4bf0-81b1-f8ac1c84944f"
+  ]
 }

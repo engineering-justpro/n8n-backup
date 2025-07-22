@@ -1,70 +1,10 @@
 {
-  "active": false,
-  "connections": {
-    "Supabase": {
-      "main": [
-        [
-          {
-            "node": "If",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Delete Old Doc Rows1": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Loop Over Items1": {
-      "main": [
-        [],
-        [
-          {
-            "node": "Delete Old Doc Rows1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "When Executed by Another Workflow": {
-      "main": [
-        [
-          {
-            "node": "Supabase",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "If": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    }
-  },
   "createdAt": "2025-06-24T04:15:55.435Z",
+  "updatedAt": "2025-06-27T06:27:45.582Z",
   "id": "oW3T6728RC710Zg5",
-  "isArchived": false,
-  "meta": {
-    "templateCredsSetupCompleted": true
-  },
   "name": "Clear One KB",
+  "active": false,
+  "isArchived": false,
   "nodes": [
     {
       "parameters": {
@@ -196,6 +136,71 @@
       "name": "If"
     }
   ],
+  "connections": {
+    "Supabase": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete Old Doc Rows1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Delete Old Doc Rows1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Supabase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "pinData": {
     "When Executed by Another Workflow": [
       {
@@ -205,10 +210,8 @@
       }
     ]
   },
-  "settings": {
-    "executionOrder": "v1"
-  },
-  "staticData": null,
+  "versionId": "c921a4a0-66e2-4cef-af56-2158b6930ad6",
+  "triggerCount": 0,
   "tags": [
     {
       "createdAt": "2025-06-24T05:57:29.533Z",
@@ -216,8 +219,5 @@
       "id": "0TQNWPOpix39gaQQ",
       "name": "Tool"
     }
-  ],
-  "triggerCount": 0,
-  "updatedAt": "2025-06-27T06:27:45.582Z",
-  "versionId": "c921a4a0-66e2-4cef-af56-2158b6930ad6"
+  ]
 }

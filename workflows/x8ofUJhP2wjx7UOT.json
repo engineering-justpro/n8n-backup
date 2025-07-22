@@ -1,87 +1,10 @@
 {
-  "active": false,
-  "connections": {
-    "Delete Old Doc Rows": {
-      "main": [
-        [
-          {
-            "node": "If1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Local File Trigger": {
-      "main": [
-        [
-          {
-            "node": "Global Constants",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "If": {
-      "main": [
-        [
-          {
-            "node": "Read and Upload One File to KB",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Delete Old Doc Rows",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "If1": {
-      "main": [
-        [
-          {
-            "node": "Read and Upload One File to KB",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Global Constants": {
-      "main": [
-        [
-          {
-            "node": "Get KB Name and Path",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get KB Name and Path": {
-      "main": [
-        [
-          {
-            "node": "If",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    }
-  },
   "createdAt": "2025-06-16T04:30:36.885Z",
+  "updatedAt": "2025-06-26T03:45:17.605Z",
   "id": "x8ofUJhP2wjx7UOT",
-  "isArchived": false,
-  "meta": {
-    "templateCredsSetupCompleted": true
-  },
   "name": "KB Automation",
+  "active": false,
+  "isArchived": false,
   "nodes": [
     {
       "parameters": {
@@ -303,6 +226,88 @@
       "name": "Get KB Name and Path"
     }
   ],
+  "connections": {
+    "Delete Old Doc Rows": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Local File Trigger": {
+      "main": [
+        [
+          {
+            "node": "Global Constants",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Read and Upload One File to KB",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Delete Old Doc Rows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Read and Upload One File to KB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Global Constants": {
+      "main": [
+        [
+          {
+            "node": "Get KB Name and Path",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get KB Name and Path": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "pinData": {
     "Get KB Name and Path": [
       {
@@ -321,10 +326,8 @@
       }
     ]
   },
-  "settings": {
-    "executionOrder": "v1"
-  },
-  "staticData": null,
+  "versionId": "8d8884f5-56b8-4ce1-9684-aadbca4fdf1c",
+  "triggerCount": 1,
   "tags": [
     {
       "createdAt": "2025-06-26T03:45:11.043Z",
@@ -332,8 +335,5 @@
       "id": "L2t4VuLDnRr5jLLD",
       "name": "Main-DEP"
     }
-  ],
-  "triggerCount": 1,
-  "updatedAt": "2025-06-26T03:45:17.605Z",
-  "versionId": "8d8884f5-56b8-4ce1-9684-aadbca4fdf1c"
+  ]
 }

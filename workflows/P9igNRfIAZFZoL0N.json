@@ -1,45 +1,10 @@
 {
-  "active": false,
-  "connections": {
-    "When Executed by Another Workflow": {
-      "main": [
-        [
-          {
-            "node": "Global Constants",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "When clicking ‘Execute workflow’": {
-      "main": [
-        [
-          {
-            "node": "Global Constants",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Global Constants": {
-      "main": [
-        [
-          {
-            "node": "Code",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    }
-  },
   "createdAt": "2025-06-24T06:01:46.629Z",
+  "updatedAt": "2025-06-24T08:09:35.003Z",
   "id": "P9igNRfIAZFZoL0N",
-  "isArchived": false,
-  "meta": null,
   "name": "Get KB Name By Path",
+  "active": false,
+  "isArchived": false,
   "nodes": [
     {
       "parameters": {
@@ -103,6 +68,46 @@
       "name": "Code"
     }
   ],
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Global Constants",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Global Constants",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Global Constants": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": null,
   "pinData": {
     "When Executed by Another Workflow": [
       {
@@ -112,10 +117,8 @@
       }
     ]
   },
-  "settings": {
-    "executionOrder": "v1"
-  },
-  "staticData": null,
+  "versionId": "9323b31e-7adf-4e9a-92e1-540c0e9b08dd",
+  "triggerCount": 0,
   "tags": [
     {
       "createdAt": "2025-06-24T05:57:29.533Z",
@@ -123,8 +126,5 @@
       "id": "0TQNWPOpix39gaQQ",
       "name": "Tool"
     }
-  ],
-  "triggerCount": 0,
-  "updatedAt": "2025-06-24T08:09:35.003Z",
-  "versionId": "9323b31e-7adf-4e9a-92e1-540c0e9b08dd"
+  ]
 }

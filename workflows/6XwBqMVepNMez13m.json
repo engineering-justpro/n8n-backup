@@ -1,41 +1,10 @@
 {
-  "active": true,
-  "connections": {
-    "Supabase Delete Execution Entity": {
-      "main": [
-        []
-      ]
-    },
-    "Supabase Get Execution Entities": {
-      "main": [
-        [
-          {
-            "node": "Supabase Delete Execution Entity",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Schedule Trigger": {
-      "main": [
-        [
-          {
-            "node": "Supabase Get Execution Entities",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    }
-  },
   "createdAt": "2025-06-24T08:43:12.772Z",
+  "updatedAt": "2025-06-24T09:15:03.634Z",
   "id": "6XwBqMVepNMez13m",
-  "isArchived": false,
-  "meta": {
-    "templateCredsSetupCompleted": true
-  },
   "name": "Clear Execution Histories Automation",
+  "active": false,
+  "isArchived": false,
   "nodes": [
     {
       "parameters": {
@@ -113,7 +82,35 @@
       "name": "Schedule Trigger"
     }
   ],
-  "pinData": {},
+  "connections": {
+    "Supabase Delete Execution Entity": {
+      "main": [
+        []
+      ]
+    },
+    "Supabase Get Execution Entities": {
+      "main": [
+        [
+          {
+            "node": "Supabase Delete Execution Entity",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Supabase Get Execution Entities",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
   "settings": {
     "executionOrder": "v1"
   },
@@ -122,6 +119,12 @@
       "recurrenceRules": []
     }
   },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "pinData": {},
+  "versionId": "c0fb0822-200a-43a1-ae81-c48ca3963bb3",
+  "triggerCount": 1,
   "tags": [
     {
       "createdAt": "2025-06-24T05:57:43.570Z",
@@ -129,8 +132,5 @@
       "id": "aE9J8xMHCvJ9aubU",
       "name": "Main"
     }
-  ],
-  "triggerCount": 1,
-  "updatedAt": "2025-06-24T09:15:03.634Z",
-  "versionId": "c0fb0822-200a-43a1-ae81-c48ca3963bb3"
+  ]
 }

@@ -1,23 +1,10 @@
 {
-  "active": false,
-  "connections": {
-    "When Executed by Another Workflow": {
-      "main": [
-        [
-          {
-            "node": "Code",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    }
-  },
   "createdAt": "2025-06-23T04:58:48.398Z",
+  "updatedAt": "2025-06-24T07:25:19.159Z",
   "id": "kYy7TCXiB8oWv8qu",
-  "isArchived": false,
-  "meta": null,
   "name": "Parse Paths",
+  "active": false,
+  "isArchived": false,
   "nodes": [
     {
       "parameters": {
@@ -53,6 +40,24 @@
       "name": "When Executed by Another Workflow"
     }
   ],
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": null,
   "pinData": {
     "When Executed by Another Workflow": [
       {
@@ -62,10 +67,8 @@
       }
     ]
   },
-  "settings": {
-    "executionOrder": "v1"
-  },
-  "staticData": null,
+  "versionId": "3e564d9d-66bc-490d-b49d-38cac1942f97",
+  "triggerCount": 0,
   "tags": [
     {
       "createdAt": "2025-06-24T05:57:29.533Z",
@@ -73,8 +76,5 @@
       "id": "0TQNWPOpix39gaQQ",
       "name": "Tool"
     }
-  ],
-  "triggerCount": 0,
-  "updatedAt": "2025-06-24T07:25:19.159Z",
-  "versionId": "3e564d9d-66bc-490d-b49d-38cac1942f97"
+  ]
 }

@@ -1,88 +1,10 @@
 {
-  "active": false,
-  "connections": {
-    "Embeddings Ollama": {
-      "ai_embedding": [
-        [
-          {
-            "node": "Supabase Vector Store documents",
-            "type": "ai_embedding",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Supabase Vector Store documents": {
-      "ai_vectorStore": [
-        [
-          {
-            "node": "Answer questions with a vector store documents",
-            "type": "ai_vectorStore",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Answer questions with a vector store documents": {
-      "ai_tool": [
-        [
-          {
-            "node": "Knowledge Base Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Ollama Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Knowledge Base Agent",
-            "type": "ai_languageModel",
-            "index": 0
-          },
-          {
-            "node": "Answer questions with a vector store documents",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Knowledge Base Agent": {
-      "main": [
-        [
-          {
-            "node": "Code",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Input": {
-      "main": [
-        [
-          {
-            "node": "Knowledge Base Agent",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Call n8n Workflow Tool": {
-      "ai_tool": [
-        []
-      ]
-    }
-  },
   "createdAt": "2025-06-24T04:02:11.832Z",
+  "updatedAt": "2025-07-01T08:55:25.536Z",
   "id": "zqdmKqXTpGGNbdoi",
-  "isArchived": false,
-  "meta": null,
   "name": "AI Search By One KB",
+  "active": false,
+  "isArchived": false,
   "nodes": [
     {
       "parameters": {
@@ -266,6 +188,89 @@
       "name": "Call n8n Workflow Tool"
     }
   ],
+  "connections": {
+    "Embeddings Ollama": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Supabase Vector Store documents",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase Vector Store documents": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Answer questions with a vector store documents",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Answer questions with a vector store documents": {
+      "ai_tool": [
+        [
+          {
+            "node": "Knowledge Base Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Knowledge Base Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Answer questions with a vector store documents",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Knowledge Base Agent": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Input": {
+      "main": [
+        [
+          {
+            "node": "Knowledge Base Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call n8n Workflow Tool": {
+      "ai_tool": [
+        []
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": null,
   "pinData": {
     "Input": [
       {
@@ -283,10 +288,8 @@
       }
     ]
   },
-  "settings": {
-    "executionOrder": "v1"
-  },
-  "staticData": null,
+  "versionId": "4277221b-f5a6-487f-9dd8-c360615b4979",
+  "triggerCount": 0,
   "tags": [
     {
       "createdAt": "2025-06-24T05:57:29.533Z",
@@ -294,8 +297,5 @@
       "id": "0TQNWPOpix39gaQQ",
       "name": "Tool"
     }
-  ],
-  "triggerCount": 0,
-  "updatedAt": "2025-07-01T08:55:25.536Z",
-  "versionId": "4277221b-f5a6-487f-9dd8-c360615b4979"
+  ]
 }

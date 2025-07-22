@@ -1,58 +1,10 @@
 {
-  "active": false,
-  "connections": {
-    "Odoo Website AI Response": {
-      "main": [
-        [
-          {
-            "node": "Combine Agent",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "When Executed by Another Workflow": {
-      "main": [
-        [
-          {
-            "node": "AI Search By All KBs",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Ollama Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Combine Agent",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "AI Search By All KBs": {
-      "main": [
-        [
-          {
-            "node": "Odoo Website AI Response",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    }
-  },
   "createdAt": "2025-06-16T04:32:23.587Z",
+  "updatedAt": "2025-06-24T09:15:13.828Z",
   "id": "4HCG78e9ayYJI1zb",
-  "isArchived": false,
-  "meta": {
-    "templateCredsSetupCompleted": true
-  },
   "name": "KB Odoo AI Search",
+  "active": false,
+  "isArchived": false,
   "nodes": [
     {
       "parameters": {
@@ -180,11 +132,62 @@
       "name": "AI Search By All KBs"
     }
   ],
-  "pinData": {},
+  "connections": {
+    "Odoo Website AI Response": {
+      "main": [
+        [
+          {
+            "node": "Combine Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "AI Search By All KBs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Combine Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Search By All KBs": {
+      "main": [
+        [
+          {
+            "node": "Odoo Website AI Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "pinData": {},
+  "versionId": "12e6cf9b-4b30-4719-bb67-4c9a26b8c980",
+  "triggerCount": 0,
   "tags": [
     {
       "createdAt": "2025-06-24T05:57:43.570Z",
@@ -192,8 +195,5 @@
       "id": "aE9J8xMHCvJ9aubU",
       "name": "Main"
     }
-  ],
-  "triggerCount": 0,
-  "updatedAt": "2025-06-24T09:15:13.828Z",
-  "versionId": "12e6cf9b-4b30-4719-bb67-4c9a26b8c980"
+  ]
 }

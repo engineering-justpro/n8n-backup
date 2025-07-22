@@ -1,74 +1,10 @@
 {
-  "active": true,
-  "connections": {
-    "Global Constants": {
-      "main": [
-        [
-          {
-            "node": "Get All Local KB Names",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get All Local KB Names": {
-      "main": [
-        [
-          {
-            "node": "Clear One KB By Name",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get All Local file Paths": {
-      "main": [
-        [
-          {
-            "node": "Read and Upload One File to KB",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Read and Upload One File to KB": {
-      "main": [
-        []
-      ]
-    },
-    "Clear One KB By Name": {
-      "main": [
-        [
-          {
-            "node": "Get All Local file Paths",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Schedule Trigger": {
-      "main": [
-        [
-          {
-            "node": "Global Constants",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    }
-  },
   "createdAt": "2025-06-16T04:31:44.236Z",
+  "updatedAt": "2025-06-27T06:27:55.620Z",
   "id": "kZlGngMQPd0x1X7J",
-  "isArchived": false,
-  "meta": {
-    "templateCredsSetupCompleted": true
-  },
   "name": "Recreate All KBs",
+  "active": false,
+  "isArchived": false,
   "nodes": [
     {
       "parameters": {
@@ -304,7 +240,68 @@
       "name": "Schedule Trigger"
     }
   ],
-  "pinData": {},
+  "connections": {
+    "Global Constants": {
+      "main": [
+        [
+          {
+            "node": "Get All Local KB Names",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get All Local KB Names": {
+      "main": [
+        [
+          {
+            "node": "Clear One KB By Name",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get All Local file Paths": {
+      "main": [
+        [
+          {
+            "node": "Read and Upload One File to KB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read and Upload One File to KB": {
+      "main": [
+        []
+      ]
+    },
+    "Clear One KB By Name": {
+      "main": [
+        [
+          {
+            "node": "Get All Local file Paths",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Global Constants",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
   "settings": {
     "executionOrder": "v1"
   },
@@ -313,6 +310,12 @@
       "recurrenceRules": []
     }
   },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "pinData": {},
+  "versionId": "00ddae6e-1105-4e80-b6cc-c966bfba0ead",
+  "triggerCount": 1,
   "tags": [
     {
       "createdAt": "2025-06-24T05:57:43.570Z",
@@ -320,8 +323,5 @@
       "id": "aE9J8xMHCvJ9aubU",
       "name": "Main"
     }
-  ],
-  "triggerCount": 1,
-  "updatedAt": "2025-06-27T06:27:55.620Z",
-  "versionId": "00ddae6e-1105-4e80-b6cc-c966bfba0ead"
+  ]
 }

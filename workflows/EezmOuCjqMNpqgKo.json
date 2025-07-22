@@ -1,80 +1,10 @@
 {
-  "active": false,
-  "connections": {
-    "Globals": {
-      "main": [
-        [
-          {
-            "node": "Get all files in given path",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Split the result": {
-      "main": [
-        [
-          {
-            "node": "Get file content from GitHub",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Convert files to JSON": {
-      "main": [
-        [
-          {
-            "node": "Restore n8n Workflows",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get all files in given path": {
-      "main": [
-        [
-          {
-            "node": "Split the result",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get file content from GitHub": {
-      "main": [
-        [
-          {
-            "node": "Convert files to JSON",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "When clicking ‘Test workflow’": {
-      "main": [
-        [
-          {
-            "node": "Globals",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    }
-  },
   "createdAt": "2025-07-17T09:13:23.692Z",
+  "updatedAt": "2025-07-22T02:38:30.602Z",
   "id": "EezmOuCjqMNpqgKo",
-  "isArchived": false,
-  "meta": {
-    "templateCredsSetupCompleted": true
-  },
   "name": "Restore workflows from GitHub",
+  "active": false,
+  "isArchived": true,
   "nodes": [
     {
       "parameters": {},
@@ -259,6 +189,81 @@
       }
     }
   ],
+  "connections": {
+    "Globals": {
+      "main": [
+        [
+          {
+            "node": "Get all files in given path",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split the result": {
+      "main": [
+        [
+          {
+            "node": "Get file content from GitHub",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert files to JSON": {
+      "main": [
+        [
+          {
+            "node": "Restore n8n Workflows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get all files in given path": {
+      "main": [
+        [
+          {
+            "node": "Split the result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get file content from GitHub": {
+      "main": [
+        [
+          {
+            "node": "Convert files to JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Globals",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "pinData": {
     "Split the result": [
       {
@@ -268,12 +273,7 @@
       }
     ]
   },
-  "settings": {
-    "executionOrder": "v1"
-  },
-  "staticData": null,
-  "tags": [],
+  "versionId": "b9fc3df6-99b4-4353-b5d4-bc76077324e9",
   "triggerCount": 0,
-  "updatedAt": "2025-07-17T09:16:46.113Z",
-  "versionId": "65fa3baa-a85f-4170-a755-cd929ba0b630"
+  "tags": []
 }

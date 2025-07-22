@@ -1,92 +1,10 @@
 {
-  "active": false,
-  "connections": {
-    "Globals": {
-      "main": [
-        [
-          {
-            "node": "Get all files in given path",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Split the result": {
-      "main": [
-        [
-          {
-            "node": "Get file content from GitHub",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Convert files to JSON": {
-      "main": [
-        [
-          {
-            "node": "Check for skipped Credentials",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get all files in given path": {
-      "main": [
-        [
-          {
-            "node": "Split the result",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get file content from GitHub": {
-      "main": [
-        [
-          {
-            "node": "Convert files to JSON",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Check for skipped Credentials": {
-      "main": [
-        [],
-        [
-          {
-            "node": "Restore n8n Credentials",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "When clicking ‘Test workflow’": {
-      "main": [
-        [
-          {
-            "node": "Globals",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    }
-  },
   "createdAt": "2025-07-17T07:26:51.052Z",
+  "updatedAt": "2025-07-17T09:02:35.734Z",
   "id": "CVAQZLFNvv5cHVSY",
-  "isArchived": false,
-  "meta": {
-    "templateCredsSetupCompleted": true
-  },
   "name": "Restore credentials from GitHub",
+  "active": false,
+  "isArchived": false,
   "nodes": [
     {
       "parameters": {},
@@ -330,13 +248,95 @@
       "typeVersion": 2.2
     }
   ],
-  "pinData": {},
+  "connections": {
+    "Globals": {
+      "main": [
+        [
+          {
+            "node": "Get all files in given path",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split the result": {
+      "main": [
+        [
+          {
+            "node": "Get file content from GitHub",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert files to JSON": {
+      "main": [
+        [
+          {
+            "node": "Check for skipped Credentials",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get all files in given path": {
+      "main": [
+        [
+          {
+            "node": "Split the result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get file content from GitHub": {
+      "main": [
+        [
+          {
+            "node": "Convert files to JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check for skipped Credentials": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Restore n8n Credentials",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Globals",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [],
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "pinData": {},
+  "versionId": "d40d2e23-5a63-4c0e-8a91-4381a7f242c5",
   "triggerCount": 0,
-  "updatedAt": "2025-07-17T09:02:35.734Z",
-  "versionId": "d40d2e23-5a63-4c0e-8a91-4381a7f242c5"
+  "tags": []
 }

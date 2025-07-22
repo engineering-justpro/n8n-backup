@@ -1,63 +1,10 @@
 {
-  "active": false,
-  "connections": {
-    "Execute Command": {
-      "main": [
-        [
-          {
-            "node": "Parse Paths",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "When Executed by Another Workflow": {
-      "main": [
-        [
-          {
-            "node": "Global Constants",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "When clicking ‘Execute workflow’": {
-      "main": [
-        [
-          {
-            "node": "Global Constants",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Global Constants": {
-      "main": [
-        [
-          {
-            "node": "Execute Command",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Parse Paths": {
-      "main": [
-        []
-      ]
-    }
-  },
   "createdAt": "2025-06-16T04:30:22.363Z",
+  "updatedAt": "2025-06-24T05:58:44.238Z",
   "id": "HgDRV4hVYvk3AbRp",
-  "isArchived": false,
-  "meta": {
-    "templateCredsSetupCompleted": true
-  },
   "name": "Get All Local File Paths",
+  "active": false,
+  "isArchived": false,
   "nodes": [
     {
       "parameters": {
@@ -162,11 +109,67 @@
       "name": "Parse Paths"
     }
   ],
-  "pinData": {},
+  "connections": {
+    "Execute Command": {
+      "main": [
+        [
+          {
+            "node": "Parse Paths",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Global Constants",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Global Constants",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Global Constants": {
+      "main": [
+        [
+          {
+            "node": "Execute Command",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Paths": {
+      "main": [
+        []
+      ]
+    }
+  },
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "pinData": {},
+  "versionId": "af5e04ee-63b0-472b-bfeb-2e8a52430837",
+  "triggerCount": 0,
   "tags": [
     {
       "createdAt": "2025-06-24T05:57:29.533Z",
@@ -174,8 +177,5 @@
       "id": "0TQNWPOpix39gaQQ",
       "name": "Tool"
     }
-  ],
-  "triggerCount": 0,
-  "updatedAt": "2025-06-24T05:58:44.238Z",
-  "versionId": "af5e04ee-63b0-472b-bfeb-2e8a52430837"
+  ]
 }
