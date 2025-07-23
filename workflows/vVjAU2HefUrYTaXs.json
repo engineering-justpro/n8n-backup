@@ -1,0 +1,99 @@
+{
+  "createdAt": "2025-07-23T02:12:15.699Z",
+  "updatedAt": "2025-07-23T02:36:13.028Z",
+  "id": "vVjAU2HefUrYTaXs",
+  "name": "Pull Workflows and Credentials to Local",
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "On clicking 'execute'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        -336,
+        272
+      ],
+      "typeVersion": 1,
+      "id": "3cd41bfd-e64f-426a-a43f-5668c7d59c9a"
+    },
+    {
+      "parameters": {
+        "triggerTimes": {
+          "item": [
+            {
+              "hour": 0
+            }
+          ]
+        }
+      },
+      "name": "Cron",
+      "type": "n8n-nodes-base.cron",
+      "position": [
+        -336,
+        64
+      ],
+      "typeVersion": 1,
+      "id": "6eaf5b2f-6a42-4d5b-88c5-54ef0c401c73",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "command": "/tasks/pull.sh"
+      },
+      "name": "Execute Command",
+      "type": "n8n-nodes-base.executeCommand",
+      "position": [
+        -64,
+        176
+      ],
+      "typeVersion": 1,
+      "id": "089a6708-a58f-4175-8673-b0550c7fea40"
+    }
+  ],
+  "connections": {
+    "Cron": {
+      "main": [
+        [
+          {
+            "node": "Execute Command",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On clicking 'execute'": {
+      "main": [
+        [
+          {
+            "node": "Execute Command",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Command": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": null,
+  "pinData": {},
+  "versionId": "c1ef15a3-57b6-480b-a351-dfbe268b6f3b",
+  "triggerCount": 1,
+  "tags": [
+    {
+      "createdAt": "2025-06-24T05:57:29.533Z",
+      "updatedAt": "2025-06-24T05:57:29.533Z",
+      "id": "0TQNWPOpix39gaQQ",
+      "name": "Tool"
+    }
+  ]
+}

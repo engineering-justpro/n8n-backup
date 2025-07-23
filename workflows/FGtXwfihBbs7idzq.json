@@ -1,0 +1,133 @@
+{
+  "createdAt": "2025-07-23T02:22:44.996Z",
+  "updatedAt": "2025-07-23T02:52:49.031Z",
+  "id": "FGtXwfihBbs7idzq",
+  "name": "0723",
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "content": "这是一个块解析\n",
+        "height": 320,
+        "width": 416,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -64,
+        48
+      ],
+      "typeVersion": 1,
+      "id": "7e60a737-83bf-48e9-ac31-5777e625a48b",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        480,
+        192
+      ],
+      "typeVersion": 1,
+      "id": "67cf5149-12f5-41aa-941a-f2976353c7a9",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        96,
+        208
+      ],
+      "id": "1b253e9c-8cec-44b6-86d8-4df560109d35",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        288,
+        128
+      ],
+      "id": "d45277a8-cece-47e6-a240-c9ccc34ec804",
+      "name": "Execute Command"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        96,
+        16
+      ],
+      "id": "49cefbda-5841-4a9a-abe1-49bd1b65714d",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        608,
+        128
+      ],
+      "id": "2108810b-3cdc-49b3-9afb-d1a85de2c451",
+      "name": "Schedule Trigger1"
+    }
+  ],
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Execute Command",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Execute Command",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": null,
+  "pinData": {},
+  "versionId": "49a38f78-a5f9-46e0-9d81-d02d64481cf8",
+  "triggerCount": 0,
+  "tags": [
+    {
+      "createdAt": "2025-06-24T05:57:29.533Z",
+      "updatedAt": "2025-06-24T05:57:29.533Z",
+      "id": "0TQNWPOpix39gaQQ",
+      "name": "Tool"
+    }
+  ]
+}
