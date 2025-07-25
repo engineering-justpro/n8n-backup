@@ -1,6 +1,6 @@
 {
   "createdAt": "2025-06-23T05:43:18.125Z",
-  "updatedAt": "2025-06-26T03:41:54.557Z",
+  "updatedAt": "2025-07-24T07:25:59.443Z",
   "id": "Mhbn1hQSHRD5S95O",
   "name": "Read and Upload File(s) to KB",
   "active": false,
@@ -17,7 +17,7 @@
       "type": "n8n-nodes-base.extractFromFile",
       "typeVersion": 1,
       "position": [
-        60,
+        64,
         160
       ],
       "alwaysOutputData": true
@@ -40,7 +40,7 @@
       "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
       "typeVersion": 1,
       "position": [
-        740,
+        752,
         400
       ]
     },
@@ -55,8 +55,8 @@
       "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
       "typeVersion": 1,
       "position": [
-        740,
-        540
+        752,
+        544
       ]
     },
     {
@@ -68,7 +68,7 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOllama",
       "typeVersion": 1,
       "position": [
-        620,
+        624,
         400
       ],
       "credentials": {
@@ -199,7 +199,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -180,
+        -176,
         160
       ],
       "id": "7e652c4c-686f-4882-ac3c-1c17c72efa7e",
@@ -215,8 +215,8 @@
       "type": "n8n-nodes-base.readWriteFile",
       "typeVersion": 1,
       "position": [
-        -500,
-        180
+        -496,
+        192
       ],
       "id": "0c5186ac-7bf2-4372-985b-937d325c3a78",
       "name": "File",
@@ -234,7 +234,7 @@
       "type": "n8n-nodes-base.extractFromFile",
       "typeVersion": 1,
       "position": [
-        60,
+        64,
         0
       ],
       "alwaysOutputData": true
@@ -246,8 +246,8 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        1100,
-        140
+        1104,
+        144
       ],
       "id": "fc931351-c793-47e2-b3c7-98a2d818f09a",
       "name": "Wait1",
@@ -267,8 +267,8 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1.1,
       "position": [
-        -680,
-        180
+        -688,
+        192
       ],
       "id": "fa97d2ac-24af-40c0-a00b-66a24535795c",
       "name": "When Executed by Another Workflow"
@@ -288,7 +288,7 @@
                 "conditions": [
                   {
                     "leftValue": "={{ $('File').item.binary.data.directory }}",
-                    "rightValue": "={{$('Global Constants').item.json.constants.kb_path }}/code/",
+                    "rightValue": "={{$('Global Constants').item.json.constants.kb_path }}/code",
                     "operator": {
                       "type": "string",
                       "operation": "startsWith"
@@ -311,7 +311,7 @@
                   {
                     "id": "3ca74871-7bc1-4325-b353-36cd7287f963",
                     "leftValue": "={{ $('File').item.binary.data.directory }}",
-                    "rightValue": "={{$('Global Constants').item.json.constants.kb_path }}/odoo/",
+                    "rightValue": "={{$('Global Constants').item.json.constants.kb_path }}/odoo",
                     "operator": {
                       "type": "string",
                       "operation": "startsWith"
@@ -333,7 +333,7 @@
                   {
                     "id": "7e84be62-971c-41a5-8f39-3d527f3de529",
                     "leftValue": "={{ $('File').item.binary.data.directory }}",
-                    "rightValue": "={{$('Global Constants').item.json.constants.kb_path }}/sharepoint/",
+                    "rightValue": "={{$('Global Constants').item.json.constants.kb_path }}/sharepoint",
                     "operator": {
                       "type": "string",
                       "operation": "startsWith"
@@ -350,7 +350,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        340,
+        352,
         160
       ],
       "id": "78e59d5c-e618-4add-be18-e93c4d19d4ef",
@@ -371,8 +371,8 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
       "typeVersion": 1,
       "position": [
-        620,
-        140
+        624,
+        144
       ],
       "id": "741f88f6-42b3-4dd4-bac7-831975ecff73",
       "name": "Supabase Vector Store",
@@ -389,8 +389,8 @@
       "type": "n8n-nodes-globals.globalConstants",
       "typeVersion": 1,
       "position": [
-        -340,
-        180
+        -336,
+        192
       ],
       "id": "9e85ce85-c24b-4ee9-9cf2-004d6480393b",
       "name": "Global Constants",
@@ -572,7 +572,7 @@
     "When Executed by Another Workflow": [
       {
         "json": {
-          "input": "/data/shared/code/odoo-pvs/om_data_remove/models/model.py"
+          "input": "/data/shared/odoo/360 Feedback — Odoo 18.0 documentation.txt"
         }
       },
       {
@@ -582,7 +582,7 @@
       }
     ]
   },
-  "versionId": "0185fc67-b469-4921-bda3-eb20246e126b",
+  "versionId": "66bc594a-9ca9-450b-aaa1-db7206ab3849",
   "triggerCount": 0,
   "tags": [
     {
