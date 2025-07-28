@@ -1,9 +1,9 @@
 {
   "createdAt": "2025-06-27T08:29:09.650Z",
-  "updatedAt": "2025-07-24T07:42:44.029Z",
+  "updatedAt": "2025-07-28T03:18:11.172Z",
   "id": "8NGtjxzT5j3cWdbP",
   "name": "Open WebUI Agent with Web Search",
-  "active": true,
+  "active": false,
   "isArchived": false,
   "nodes": [
     {
